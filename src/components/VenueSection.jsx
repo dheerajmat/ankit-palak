@@ -71,7 +71,7 @@ export default function VenueSection() {
                 className="outline-btn"
                 target="_blank"
                 rel="noopener noreferrer"
-                href={`https://www.google.com/maps/search/?api=1&query=${venueData.secondary.mapQuery}`}
+                href={venueData.secondary.mapUrl || `https://www.google.com/maps/search/?api=1&query=${venueData.secondary.mapQuery}`}
               >
                 <span>⌖</span> Get Directions
               </a>

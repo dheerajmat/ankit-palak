@@ -53,36 +53,6 @@ const SAAT_PHERE_VOWS = [
   }
 ];
 
-const STORY_MILESTONES = [
-  {
-    id: 1,
-    num: '01',
-    kicker: 'THE FIRST CHAPTER',
-    title: 'Destiny Intertwined',
-    hindi: 'जब मिले दो दिल',
-    date: 'A Sacred Beginning',
-    desc: 'Two souls rooted in the warmth of Rajasthani heritage, brought together by destiny and the cherished blessings of our loving families.'
-  },
-  {
-    id: 2,
-    num: '02',
-    kicker: 'THE SACRED PROMISE',
-    title: 'Rings of Eternity',
-    hindi: 'सगाई का पावन बंधन',
-    date: 'The Vow of Love',
-    desc: 'With rings exchanged and eyes filled with dreams, a heartfelt promise of lifelong partnership, endless laughter, and quiet understanding was sealed.'
-  },
-  {
-    id: 3,
-    num: '03',
-    kicker: 'THE ROYAL VIVAH',
-    title: 'The Eternal Phere',
-    hindi: 'शुभ विवाह · सात फेरे',
-    date: '20 November 2026',
-    desc: 'Circling the sacred Agni under the royal Ajmer stars at Hotel Grand Xenia, taking seven sacred vows to walk together through eternity.'
-  }
-];
-
 export default function TogetherForeverPavilion() {
   const [activeVowIndex, setActiveVowIndex] = useState(0);
   const activeVow = SAAT_PHERE_VOWS[activeVowIndex];
@@ -144,35 +114,7 @@ export default function TogetherForeverPavilion() {
           </div>
         </div>
 
-        {/* 4. Three Royal Love Journey Milestones */}
-        <div className="sv-milestones-section">
-          <div className="sv-milestones-heading-wrap">
-            <span className="sv-milestones-sub">OUR JOURNEY</span>
-            <h3 className="sv-milestones-title">How Forever Began</h3>
-          </div>
-
-          <div className="sv-milestones-grid">
-            {STORY_MILESTONES.map((m) => (
-              <div key={m.id} className="sv-milestone-card">
-                <div className="sv-milestone-arch-top">
-                  <span className="sv-milestone-num">{m.num}</span>
-                  <span className="sv-milestone-kicker">{m.kicker}</span>
-                </div>
-
-                <div className="sv-milestone-body">
-                  <h4 className="sv-milestone-name">{m.title}</h4>
-                  <span className="sv-milestone-hindi">{m.hindi}</span>
-                  <span className="sv-milestone-date">{m.date}</span>
-                  <p className="sv-milestone-desc">{m.desc}</p>
-                </div>
-
-                <div className="sv-milestone-bottom-border" aria-hidden="true" />
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* 5. Interactive Saat Phere (Seven Sacred Vows) Keepsake */}
+        {/* 4. Interactive Saat Phere (Seven Sacred Vows) Keepsake */}
         <div className="sv-saat-phere-container">
           <div className="sv-saat-phere-header">
             <span className="sv-saat-phere-kicker">SACRED VOWS OF HINDU VIVAH</span>

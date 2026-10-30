@@ -65,7 +65,7 @@ export default function EventModal({ event, onClose }) {
               className="outline-btn"
               target="_blank"
               rel="noopener noreferrer"
-              href={`https://www.google.com/maps/search/?api=1&query=${event.mapQuery}`}
+              href={event.mapUrl || `https://www.google.com/maps/search/?api=1&query=${event.mapQuery}`}
             >
               <span>⌖</span> Directions
             </a>
