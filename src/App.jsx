@@ -10,6 +10,7 @@ import DatePlaqueBanner from './components/shubh-vivah/DatePlaqueBanner';
 import CoupleGildedFrames from './components/shubh-vivah/CoupleGildedFrames';
 import SwingingBellsShrine from './components/shubh-vivah/SwingingBellsShrine';
 import HangingCeremonyBoards from './components/shubh-vivah/HangingCeremonyBoards';
+import TogetherForeverPavilion from './components/shubh-vivah/TogetherForeverPavilion';
 import WishesWallRsvp from './components/shubh-vivah/WishesWallRsvp';
 
 // Pastel Palace Envelope Theme Components
@@ -57,7 +58,7 @@ export default function App() {
   useEffect(() => {
     const sections = Array.from(
       document.querySelectorAll(
-        '.screen, .long-section, .sv-hero-section-exact, .sv-banner-section, .sv-couple-section, .sv-shrine-section'
+        '.screen, .long-section, .sv-hero-section-exact, .sv-banner-section, .sv-couple-section, .sv-shrine-section, .sv-ceremonies-section, .sv-together-section'
       )
     );
     const totalScenes = Math.max(sections.length, 6);
@@ -133,8 +134,8 @@ export default function App() {
           {/* 6. Suspended Ceremony Boards (11 Ceremonies) */}
           <HangingCeremonyBoards onSelectEvent={setSelectedEvent} />
 
-          {/* 7. Our Story Section */}
-          <OurStorySection />
+          {/* 7. Royal Together, Forever Pavilion (Our Story) */}
+          <TogetherForeverPavilion />
 
           {/* 8. Venue Showcase (Grand Xenia & Bravia Hotel) */}
           <VenueSection />
