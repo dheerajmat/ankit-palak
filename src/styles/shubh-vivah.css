@@ -443,23 +443,46 @@
   gap: 10px;
   padding: 13px 36px;
   border-radius: 999px;
-  border: 2px solid #D4A044;
-  background: linear-gradient(135deg, #8A1F2B 0%, #5E0E18 100%);
-  color: #FFFDF5;
+  border: 2px solid #D4A044 !important;
+  background: linear-gradient(135deg, #FFFDF8 0%, #FAF0D8 100%) !important;
+  color: #7B1824 !important;
   font-family: 'Cinzel', serif;
   font-size: clamp(11.5px, 2.4vw, 13px);
   font-weight: 700;
-  letter-spacing: 0.25em;
+  letter-spacing: 0.22em;
   cursor: pointer;
-  box-shadow: 0 0 32px rgba(212, 160, 68, 0.5), 0 8px 24px rgba(0, 0, 0, 0.6);
-  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  box-shadow: 0 0 28px rgba(212, 160, 68, 0.6), 0 8px 24px rgba(0, 0, 0, 0.45) !important;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, background 0.25s ease;
   overflow: visible;
 }
 
+.sv-open-invitation-btn span,
+.sv-open-invitation-btn .sv-btn-label,
+.sv-open-invitation-btn .replay-icon {
+  color: #7B1824 !important;
+  font-weight: 700 !important;
+}
+
+.sv-open-invitation-btn svg,
+.sv-open-invitation-btn .sv-btn-door-icon {
+  color: #7B1824 !important;
+  stroke: #7B1824 !important;
+}
+
 .sv-open-invitation-btn:hover {
+  background: #FFFFFF !important;
+  color: #8A1F2B !important;
+  border-color: #E2B555 !important;
   transform: translateY(-2px) scale(1.04);
-  box-shadow: 0 0 50px rgba(212, 160, 68, 0.8), 0 12px 30px rgba(0, 0, 0, 0.7);
-  border-color: #FFE6A3;
+  box-shadow: 0 0 40px rgba(212, 160, 68, 0.85), 0 12px 28px rgba(0, 0, 0, 0.55) !important;
+}
+
+.sv-open-invitation-btn:hover span,
+.sv-open-invitation-btn:hover .sv-btn-label,
+.sv-open-invitation-btn:hover svg,
+.sv-open-invitation-btn:hover .replay-icon {
+  color: #8A1F2B !important;
+  stroke: #8A1F2B !important;
 }
 
 .sv-open-invitation-btn:active {
@@ -2632,20 +2655,48 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  padding: 0 12px;
+  text-align: center;
+}
+
+.sv-couple-title-wrap {
+  max-width: 100%;
+  box-sizing: border-box;
+  text-align: center;
 }
 
 .sv-couple-hashtag-heading {
   font-family: 'Pinyon Script', cursive !important;
-  font-size: clamp(48px, 9.5vw, 72px) !important;
+  font-size: clamp(28px, 6.8vw, 64px) !important;
   font-weight: 400 !important;
-  letter-spacing: 0.04em;
-  word-spacing: 0.35em;
+  letter-spacing: 0.02em;
+  word-spacing: 0.28em;
   color: #7B1824 !important;
-  line-height: 1.1;
+  line-height: 1.2;
   margin: 0;
+  max-width: 100%;
+  text-align: center;
   text-shadow: 
     0 1px 1px rgba(255, 255, 255, 0.95),
     0 3px 14px rgba(123, 24, 36, 0.2);
+}
+
+@media (max-width: 480px) {
+  .sv-couple-hashtag-heading {
+    font-size: clamp(22px, 6vw, 30px) !important;
+    word-spacing: 0.2em;
+    line-height: 1.25;
+  }
+}
+
+@media (max-width: 360px) {
+  .sv-couple-hashtag-heading {
+    font-size: 20px !important;
+    word-spacing: 0.16em;
+  }
 }
 
 .sv-hashtag-symbol {
@@ -4947,25 +4998,39 @@
 .sv-btn-rsvp-jump {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 10px;
   padding: 14px 28px;
-  background: linear-gradient(135deg, #871A24 0%, #6E121C 100%);
-  color: #FFFDF8 !important;
+  background: linear-gradient(135deg, #FFFDF8 0%, #FAF0D8 100%) !important;
+  color: #7B1824 !important;
   font-family: 'Cinzel', serif;
   font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.12em;
   border-radius: 999px;
-  border: 1px solid #D4A044;
-  box-shadow: 0 8px 24px rgba(123, 24, 36, 0.3);
+  border: 1.5px solid #D4A044 !important;
+  box-shadow: 0 6px 20px rgba(212, 160, 68, 0.25) !important;
   cursor: pointer;
-  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+}
+
+.sv-btn-rsvp-jump span,
+.sv-btn-rsvp-jump .sv-btn-arrow {
+  color: #7B1824 !important;
+  font-weight: 700 !important;
 }
 
 .sv-btn-rsvp-jump:hover {
   transform: translateY(-2px);
-  background: linear-gradient(135deg, #9E222E 0%, #7E1520 100%);
-  box-shadow: 0 12px 28px rgba(123, 24, 36, 0.4);
+  background: #FFFFFF !important;
+  color: #8A1F2B !important;
+  border-color: #E2B555 !important;
+  box-shadow: 0 10px 26px rgba(123, 24, 36, 0.2) !important;
+}
+
+.sv-btn-rsvp-jump:hover span,
+.sv-btn-rsvp-jump:hover .sv-btn-arrow {
+  color: #8A1F2B !important;
 }
 
 .sv-btn-family-modal {
@@ -5421,23 +5486,34 @@
   align-items: center;
   gap: 10px;
   padding: 14px 32px;
-  background: linear-gradient(135deg, #871A24 0%, #6E121C 100%);
-  color: #FFFDF8 !important;
+  background: linear-gradient(135deg, #FFFDF8 0%, #FAF0D8 100%) !important;
+  color: #7B1824 !important;
   font-family: 'Cinzel', serif;
   font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.12em;
   border-radius: 999px;
-  border: 1px solid #D4A044;
-  box-shadow: 0 8px 24px rgba(123, 24, 36, 0.32);
+  border: 1.5px solid #D4A044 !important;
+  box-shadow: 0 6px 20px rgba(212, 160, 68, 0.25) !important;
   cursor: pointer;
-  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+}
+
+.sv-btn-return-invitation span {
+  color: #7B1824 !important;
+  font-weight: 700 !important;
 }
 
 .sv-btn-return-invitation:hover {
   transform: translateY(-2px);
-  background: linear-gradient(135deg, #9E222E 0%, #7E1520 100%);
-  box-shadow: 0 12px 28px rgba(123, 24, 36, 0.42);
+  background: #FFFFFF !important;
+  color: #8A1F2B !important;
+  border-color: #E2B555 !important;
+  box-shadow: 0 10px 26px rgba(123, 24, 36, 0.2) !important;
+}
+
+.sv-btn-return-invitation:hover span {
+  color: #8A1F2B !important;
 }
 
 .sv-family-page-footer {
@@ -5711,27 +5787,40 @@
   justify-content: center;
   gap: 12px;
   padding: 16px 32px;
-  background: linear-gradient(135deg, #871A24 0%, #6E121C 100%);
-  color: #FFFDF8 !important;
+  background: linear-gradient(135deg, #FFFDF8 0%, #FAF0D8 100%) !important;
+  color: #7B1824 !important;
   font-family: 'Cinzel', serif;
   font-size: clamp(13px, 2vw, 15px);
   font-weight: 700;
   letter-spacing: 0.14em;
   border-radius: 999px;
-  border: 1.5px solid #D4A044;
-  box-shadow: 0 8px 24px rgba(123, 24, 36, 0.35);
+  border: 1.5px solid #D4A044 !important;
+  box-shadow: 0 6px 22px rgba(212, 160, 68, 0.28) !important;
   cursor: pointer;
-  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+}
+
+.sv-btn-rsvp-submit span,
+.sv-btn-rsvp-submit .sv-btn-sparkle {
+  color: #7B1824 !important;
+  font-weight: 700 !important;
 }
 
 .sv-btn-rsvp-submit:hover:not(:disabled) {
   transform: translateY(-2px);
-  background: linear-gradient(135deg, #9E222E 0%, #7E1520 100%);
-  box-shadow: 0 12px 30px rgba(123, 24, 36, 0.45);
+  background: #FFFFFF !important;
+  color: #8A1F2B !important;
+  border-color: #E2B555 !important;
+  box-shadow: 0 10px 28px rgba(123, 24, 36, 0.22) !important;
+}
+
+.sv-btn-rsvp-submit:hover:not(:disabled) span,
+.sv-btn-rsvp-submit:hover:not(:disabled) .sv-btn-sparkle {
+  color: #8A1F2B !important;
 }
 
 .sv-btn-rsvp-submit:disabled {
-  opacity: 0.85;
+  opacity: 0.75;
   cursor: wait;
 }
 
@@ -5945,7 +6034,6 @@
   .sv-root input,
   .sv-root textarea,
   .sv-root select,
-  .sv-root button,
   .sv-form-input,
   .sv-form-select,
   .sv-form-textarea {
@@ -5953,6 +6041,31 @@
     forced-color-adjust: none !important;
     background-color: #FFFDF8 !important;
     color: #4A151B !important;
+  }
+
+  .sv-open-invitation-btn,
+  .sv-btn-rsvp-jump,
+  .sv-btn-rsvp-submit,
+  .sv-btn-family-modal,
+  .sv-btn-return-invitation {
+    color-scheme: light !important;
+    forced-color-adjust: none !important;
+    background: linear-gradient(135deg, #FFFDF8 0%, #FAF0D8 100%) !important;
+    color: #7B1824 !important;
+    border-color: #D4A044 !important;
+  }
+
+  .sv-open-invitation-btn span,
+  .sv-btn-rsvp-jump span,
+  .sv-btn-rsvp-submit span,
+  .sv-btn-family-modal span,
+  .sv-btn-return-invitation span,
+  .sv-open-invitation-btn svg,
+  .sv-btn-door-icon,
+  .sv-btn-arrow,
+  .sv-btn-sparkle {
+    color: #7B1824 !important;
+    stroke: #7B1824 !important;
   }
 
   .sv-root img,
