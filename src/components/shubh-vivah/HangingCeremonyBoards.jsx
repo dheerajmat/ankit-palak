@@ -258,13 +258,6 @@ export default function HangingCeremonyBoards() {
                           <span className="sv-spec-glyph">📍</span>
                           <span className="sv-spec-info">{evt.venue}</span>
                         </div>
-
-                        {evt.dressCode && (
-                          <div className="sv-story-spec-line">
-                            <span className="sv-spec-glyph">👗</span>
-                            <span className="sv-spec-info">Dress code: {evt.dressCode}</span>
-                          </div>
-                        )}
                       </div>
                     </div>
                   </div>

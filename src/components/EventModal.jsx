@@ -42,11 +42,6 @@ export default function EventModal({ event, onClose }) {
             <div>
               <strong>Time:</strong> {event.time}
             </div>
-            {event.dressCode && (
-              <div>
-                <strong>Dress Code:</strong> {event.dressCode}
-              </div>
-            )}
           </div>
 
           <p style={{ fontSize: '18px', lineHeight: 1.4, color: '#634b4c', margin: '12px 0 18px' }}>

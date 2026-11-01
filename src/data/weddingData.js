@@ -131,7 +131,6 @@ export const eventsData = [
     mapUrl: "https://maps.app.goo.gl/jwVDGoxKc6mFUmZp6",
     desc: "An auspicious beginning filled with blessings and traditional rituals.",
     image: "/assets/event-ganesh-sthapana.webp",
-    dressCode: "Any Choice",
     icon: "ॐ"
   },
   {
@@ -146,7 +145,6 @@ export const eventsData = [
     mapUrl: "https://maps.app.goo.gl/jwVDGoxKc6mFUmZp6",
     desc: "A little colour, laughter, music and fragrant henna art.",
     image: "/assets/event-mehendi.webp",
-    dressCode: "Traditional",
     icon: "✿"
   },
   {
@@ -160,7 +158,6 @@ export const eventsData = [
     mapQuery: "Hotel+Grand+Xenia+Foy+Sagar+Road+Hathi+Khera+Ajmer+Rajasthan",
     desc: "Celebrating the promise of forever with rings, smiles, and heartfelt toasts.",
     image: "/assets/event-engagement.webp",
-    dressCode: "Indo Western",
     icon: "💍"
   },
   {
@@ -174,7 +171,6 @@ export const eventsData = [
     mapQuery: "Hotel+Grand+Xenia+Foy+Sagar+Road+Hathi+Khera+Ajmer+Rajasthan",
     desc: "An unforgettable evening of dance performances, music, and togetherness.",
     image: "/assets/event-sangeet.webp",
-    dressCode: "Indo Western",
     icon: "♪"
   },
   {
@@ -188,7 +184,6 @@ export const eventsData = [
     mapQuery: "Hotel+Grand+Xenia+Foy+Sagar+Road+Hathi+Khera+Ajmer+Rajasthan",
     desc: "A royal Rajasthani banquet with good food and beautiful company.",
     image: "/assets/event-wedding-dinner.webp",
-    dressCode: "Indo Western",
     icon: "🍽️"
   },
   {
@@ -203,7 +198,6 @@ export const eventsData = [
     mapUrl: "https://maps.app.goo.gl/jwVDGoxKc6mFUmZp6",
     desc: "Beginning the wedding day with family blessings and sacred rituals.",
     image: "/assets/event-lagun.webp",
-    dressCode: "Traditional",
     icon: "🪔"
   },
   {
@@ -218,7 +212,6 @@ export const eventsData = [
     mapUrl: "https://maps.app.goo.gl/jwVDGoxKc6mFUmZp6",
     desc: "Traditions, fragrant turmeric paste, flower showers, and happy memories.",
     image: "/assets/event-haldi.webp",
-    dressCode: "Traditional",
     icon: "🌼"
   },
   {
@@ -233,7 +226,6 @@ export const eventsData = [
     mapUrl: "https://maps.app.goo.gl/jwVDGoxKc6mFUmZp6",
     desc: "A cherished family ceremony celebrating maternal uncle's blessings.",
     image: "/assets/event-bhaat.webp",
-    dressCode: "Kurta",
     icon: "🎁"
   },
   {
@@ -248,7 +240,6 @@ export const eventsData = [
     mapUrl: "https://maps.app.goo.gl/jwVDGoxKc6mFUmZp6",
     desc: "Fun games, live counters, laughter, and high-energy pre-wedding cheer.",
     image: "/assets/event-carnival.webp",
-    dressCode: "Pastel Colour Traditional",
     icon: "🎪"
   },
   {
@@ -263,7 +254,6 @@ export const eventsData = [
     mapUrl: "https://maps.app.goo.gl/jwVDGoxKc6mFUmZp6",
     desc: "Join the grand royal procession as we dance towards forever.",
     image: "/assets/event-baraat.webp",
-    dressCode: "Grand Ethnic",
     icon: "🎺"
   },
   {
@@ -277,7 +267,6 @@ export const eventsData = [
     mapQuery: "Hotel+Grand+Xenia+Foy+Sagar+Road+Hathi+Khera+Ajmer+Rajasthan",
     desc: "Celebrate the newlyweds under the starry sky with sumptuous dining and celebrations.",
     image: "/assets/event-wedding-dinner.webp",
-    dressCode: "Grand Ethnic",
     icon: "✨"
   }
 ];

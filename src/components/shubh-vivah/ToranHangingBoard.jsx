@@ -30,19 +30,6 @@ function getCeremonyHeading(name) {
   return { main: name.toUpperCase(), sub: 'CEREMONY' };
 }
 
-// Crisp short dress code labels for wooden slats
-function getShortDressCode(dress) {
-  if (!dress) return 'TRADITIONAL';
-  const d = dress.toLowerCase();
-  if (d.includes('any choice')) return 'ANY CHOICE';
-  if (d.includes('kurta')) return 'KURTA';
-  if (d.includes('pastel')) return 'PASTEL TRADITIONAL';
-  if (d.includes('indo')) return 'INDO WESTERN';
-  if (d.includes('ethnic')) return 'GRAND ETHNIC';
-  if (d.includes('traditional')) return 'TRADITIONAL';
-  return dress.toUpperCase();
-}
-
 export default function ToranHangingBoard({
   event,
   enableTilt = true,
@@ -69,7 +56,6 @@ export default function ToranHangingBoard({
 
   const heading = getCeremonyHeading(event.name);
   const tagline = CEREMONY_TAGLINES[event.id] || event.desc || 'Auspicious Sacred Ritual';
-  const shortDress = getShortDressCode(event.dressCode);
 
   const venueShort = event.venue.includes('Grand Xenia')
     ? { title: 'HOTEL GRAND XENIA', location: 'Foy Sagar Road, Ajmer' }
@@ -108,7 +94,7 @@ export default function ToranHangingBoard({
         </div>
       </div>
 
-      {/* 2. FOUR CHAIN-LINKED HANGING WOODEN SLATS */}
+      {/* 2. THREE CHAIN-LINKED HANGING WOODEN SLATS */}
       <div className="sv-toran-slats-wrapper">
         {/* Slat 1: Date */}
         <div className="sv-toran-slat sv-toran-slat-date" style={{ '--slat-order': 1 }}>
@@ -146,19 +132,6 @@ export default function ToranHangingBoard({
             <span className="sv-toran-slat-label">VENUE</span>
             <span className="sv-toran-slat-primary sv-slat-venue-name">{venueShort.title}</span>
             <span className="sv-toran-slat-secondary sv-slat-venue-sub">{venueShort.location}</span>
-          </div>
-        </div>
-
-        {/* Slat 4: Dress Code */}
-        <div className="sv-toran-slat sv-toran-slat-dress" style={{ '--slat-order': 4 }}>
-          <img
-            src="/assets/shubh-vivah/events/sign/dress.webp"
-            alt="Dress Code Slat"
-            className="sv-toran-slat-asset"
-          />
-          <div className="sv-toran-slat-content">
-            <span className="sv-toran-slat-label">DRESS CODE</span>
-            <span className="sv-toran-slat-primary sv-slat-dress-text">{shortDress}</span>
           </div>
         </div>
       </div>
