@@ -55,7 +55,7 @@ export default function ToranHangingBoard({
   const tagline = CEREMONY_TAGLINES[event.id] || event.desc || 'Auspicious Sacred Ritual';
 
   const venueShort = event.venue.includes('Grand Xenia')
-    ? { title: 'HOTEL GRAND XENIA', location: 'Foy Sagar Road, Ajmer' }
+    ? { title: 'HOTEL GRAND XENIA', location: 'Ajmer' }
     : { title: 'BRAVIA HOTEL', location: 'Panchsheel Nagar, Ajmer' };
 
   return (
