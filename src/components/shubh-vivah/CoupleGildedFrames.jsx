@@ -12,16 +12,44 @@ export default function CoupleGildedFrames() {
       id="couple-gilded"
     >
       {/* Royal Header Wrap */}
-      <div className="sv-couple-header">
+      <div
+        className="sv-couple-header"
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          width: '100%',
+          textAlign: 'center'
+        }}
+      >
         {/* Auspicious Royal Eyebrow / Kicker */}
-        <div className="sv-couple-kicker">
+        <div
+          className="sv-couple-kicker"
+          style={{
+            display: 'flex',
+            width: '100%',
+            alignItems: 'center',
+            justifyContent: 'center',
+            marginBottom: '8px'
+          }}
+        >
           <span className="sv-couple-floret" aria-hidden="true">❖</span>
           <span>TWO SOULS · ONE SACRED JOURNEY</span>
           <span className="sv-couple-floret" aria-hidden="true">❖</span>
         </div>
 
         {/* Royal Main Section Title in Hero Pinyon Script */}
-        <div className="sv-couple-title-wrap">
+        <div
+          className="sv-couple-title-wrap"
+          style={{
+            display: 'block',
+            width: '100%',
+            textAlign: 'center',
+            margin: '0 auto 6px',
+            clear: 'both'
+          }}
+        >
           <h2 className="sv-couple-title">
             The Groom &amp; Bride
           </h2>

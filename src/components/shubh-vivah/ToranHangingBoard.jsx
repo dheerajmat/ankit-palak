@@ -32,15 +32,14 @@ function getCeremonyHeading(name) {
 
 // Crisp short dress code labels for wooden slats
 function getShortDressCode(dress) {
-  if (!dress) return 'FESTIVE ATTIRE';
-  if (dress.includes('Yellow')) return 'YELLOW';
-  if (dress.includes('Mehendi') || dress.includes('Green')) return 'GREEN & YELLOW';
-  if (dress.includes('Pastel')) return 'ROYAL PASTELS';
-  if (dress.includes('Glamorous') || dress.includes('Indo-Western')) return 'INDO-WESTERN';
-  if (dress.includes('Poshak')) return 'RAJASTHANI POSHAK';
-  if (dress.includes('Sherwani') || dress.includes('Bandhgala')) return 'ROYAL BANDHGALA';
-  if (dress.includes('Formal') || dress.includes('Ethnic')) return 'GRAND ETHNIC';
-  if (dress.includes('Casual') || dress.includes('Chic')) return 'CHIC FESTIVE';
+  if (!dress) return 'TRADITIONAL';
+  const d = dress.toLowerCase();
+  if (d.includes('any choice')) return 'ANY CHOICE';
+  if (d.includes('kurta')) return 'KURTA';
+  if (d.includes('pastel')) return 'PASTEL TRADITIONAL';
+  if (d.includes('indo')) return 'INDO WESTERN';
+  if (d.includes('ethnic')) return 'GRAND ETHNIC';
+  if (d.includes('traditional')) return 'TRADITIONAL';
   return dress.toUpperCase();
 }
 

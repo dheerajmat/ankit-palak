@@ -7,10 +7,10 @@ const svSections = [
   { id: 'ceremonies', label: 'Wedding Ceremonies' },
   { id: 'our-story', label: 'Together, Forever' },
   { id: 'venue', label: 'The Wedding Venues' },
-  { id: 'gallery', label: 'Sacred Moments Gallery' },
   { id: 'invitation', label: 'Cordially Invited' },
   { id: 'rsvp-section', label: 'Will You Join Us (RSVP)' },
-  { id: 'thank-you', label: 'Thank You & Blessings' },
+  { id: 'thank-you', label: 'Dhanyawad (Thank You)' },
+  { id: 'gallery', label: 'Sacred Moments Gallery' },
 ];
 
 const pastelSections = [
@@ -22,9 +22,9 @@ const pastelSections = [
   { id: 'celebrations', label: 'Celebrations' },
   { id: 'our-story', label: 'Our Story' },
   { id: 'venue', label: 'Venue & Directions' },
-  { id: 'gallery', label: 'Moments & Details' },
   { id: 'rsvp', label: 'RSVP' },
-  { id: 'thank-you', label: 'Thank You' },
+  { id: 'thank-you', label: 'Dhanyawad (Thank You)' },
+  { id: 'gallery', label: 'Moments & Details' },
 ];
 
 export default function NavDots({ activeId, theme = 'shubh-vivah' }) {

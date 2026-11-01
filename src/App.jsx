@@ -30,6 +30,7 @@ import OurStorySection from './components/OurStorySection';
 import VenueSection from './components/VenueSection';
 import GallerySection from './components/GallerySection';
 import FinaleScene from './components/FinaleScene';
+import SiteFooter from './components/SiteFooter';
 import EventModal from './components/EventModal';
 import LightboxModal from './components/LightboxModal';
 
@@ -203,22 +204,25 @@ export default function App() {
               {/* 7. Venue Showcase (Grand Xenia & Bravia Hotel) */}
               <VenueSection />
 
-              {/* 8. Arched Gallery & Lightbox */}
+              {/* 8. Sacred Royal Invitation (You Are Cordially Invited) */}
+              <YouAreInvitedSection
+                onOpenFamilyPage={navigateToFamily}
+              />
+
+              {/* 9. RSVP Confirmation (Will You Join Us?) */}
+              <WishesWallRsvp />
+
+              {/* 10. Gratitude & Thank You Finale (Dhanyawad) */}
+              <FinaleScene onReplay={handleReplay} theme={theme} />
+
+              {/* 11. Sacred Moments Wedding Gallery (Placed below Dhanyawad as requested) */}
               <GallerySection
                 theme={theme}
                 onSelectImage={setSelectedGalleryIndex}
               />
 
-              {/* 9. Sacred Royal Invitation (You Are Cordially Invited) */}
-              <YouAreInvitedSection
-                onOpenFamilyPage={navigateToFamily}
-              />
-
-              {/* 10. RSVP Confirmation (Will You Join Us?) */}
-              <WishesWallRsvp />
-
-              {/* 11. Gratitude & Thank You Finale */}
-              <FinaleScene onReplay={handleReplay} theme={theme} />
+              {/* 12. Royal Site Footer */}
+              <SiteFooter />
             </main>
           ) : (
             /* PASTEL PALACE (ROYAL ENVELOPE THEME) */
@@ -234,12 +238,13 @@ export default function App() {
               <CelebrationsSection onSelectEvent={setSelectedEvent} />
               <OurStorySection />
               <VenueSection />
+              <RsvpSection />
+              <FinaleScene onReplay={handleReplay} theme={theme} />
               <GallerySection
                 theme={theme}
                 onSelectImage={setSelectedGalleryIndex}
               />
-              <RsvpSection />
-              <FinaleScene onReplay={handleReplay} theme={theme} />
+              <SiteFooter />
             </main>
           )}
 

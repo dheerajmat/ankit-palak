@@ -2350,12 +2350,12 @@
 }
 
 .sv-couple-header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  width: 100%;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  width: 100% !important;
   max-width: 900px;
   margin: 0 auto clamp(24px, 3.5vw, 36px);
 }
@@ -2415,9 +2415,10 @@
 }
 
 .sv-couple-kicker {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+  display: flex !important;
+  width: 100% !important;
+  align-items: center !important;
+  justify-content: center !important;
   gap: 8px;
   font-family: 'Cinzel', serif;
   font-size: clamp(11px, 2.4vw, 13px);
@@ -2425,7 +2426,7 @@
   letter-spacing: 0.22em;
   color: #8A1F2B;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.9);
-  margin: 0 auto 6px;
+  margin: 0 auto 8px !important;
 }
 
 .sv-couple-floret {
@@ -2434,13 +2435,14 @@
   filter: drop-shadow(0 1px 2px rgba(123, 24, 36, 0.18));
 }
 
-/* "The Bride & Groom" - Hero Pinyon Script Font Matching Ankit & Palak */
+/* "The Groom & Bride" - Hero Pinyon Script Font Matching Ankit & Palak */
 .sv-couple-title-wrap {
   position: relative;
-  display: block;
-  width: 100%;
-  text-align: center;
-  margin: 2px auto 6px;
+  display: block !important;
+  width: 100% !important;
+  text-align: center !important;
+  margin: 0 auto 6px !important;
+  clear: both !important;
 }
 
 .sv-couple-title {
