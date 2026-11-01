@@ -3,7 +3,7 @@ export const coupleData = {
   bride: "Palak",
   names: "Ankit & Palak",
   groomParents: "Son of Lt. Mrs. Rashmi & Mr. Pradeep Mathur",
-  brideParents: "Daughter of Deepa Mathur & Rakesh Mathur",
+  brideParents: "Daughter of Mrs. Deepa Mathur & Mr. Rakesh Mathur",
   dateText: "20 November 2026",
   targetDate: "2026-11-20T00:00:00+05:30",
   location: "Ajmer, Rajasthan",
@@ -40,13 +40,13 @@ export const bridesFamilyData = [
   {
     id: "bride-father",
     role: "FATHER OF THE BRIDE",
-    name: "RAKESH MATHUR",
+    name: "MR. RAKESH MATHUR",
     image: "/assets/shubh-vivah/family/man.webp"
   },
   {
     id: "bride-mother",
     role: "MOTHER OF THE BRIDE",
-    name: "DEEPA MATHUR",
+    name: "MRS. DEEPA MATHUR",
     image: "/assets/shubh-vivah/family/woman.webp"
   },
   {
@@ -90,7 +90,6 @@ export const venueData = {
     ceremonies: [
       { name: "Sagai (Engagement)", date: "19 Nov", time: "5:30 PM", icon: "💍" },
       { name: "Sangeet Sandhya", date: "19 Nov", time: "6:00 PM onwards", icon: "🪕" },
-      { name: "Royal Dinner Banquet", date: "19 Nov", time: "8:30 PM onwards", icon: "🍽️" },
       { name: "Wedding Dinner & Reception", date: "20 Nov", time: "9:30 PM onwards", icon: "✨" },
       { name: "Seven Vows (Sacred Phere)", date: "20 Nov", time: "Midnight onwards", icon: "🔥" }
     ]
@@ -172,33 +171,6 @@ export const eventsData = [
     desc: "An unforgettable evening of dance performances, music, and togetherness.",
     image: "/assets/event-sangeet.webp",
     icon: "♪"
-  },
-  {
-    id: "dinner-day1",
-    name: "Celebratory Dinner",
-    day: "Thursday",
-    date: "19 Nov 2026",
-    dayGroup: "day1",
-    time: "9:00 PM onwards",
-    venue: "Hotel Grand Xenia, Foy Sagar Road, Ajmer",
-    mapQuery: "Hotel+Grand+Xenia+Foy+Sagar+Road+Hathi+Khera+Ajmer+Rajasthan",
-    desc: "A royal Rajasthani banquet with good food and beautiful company.",
-    image: "/assets/event-wedding-dinner.webp",
-    icon: "🍽️"
-  },
-  {
-    id: "lagun",
-    name: "Lagun",
-    day: "Friday",
-    date: "20 Nov 2026",
-    dayGroup: "day2",
-    time: "8:00 AM onwards",
-    venue: "Bravia Hotel, Panchsheel Nagar, Ajmer",
-    mapQuery: "Bravia+Hotel+Panchsheel+Nagar+Ajmer",
-    mapUrl: "https://maps.app.goo.gl/jwVDGoxKc6mFUmZp6",
-    desc: "Beginning the wedding day with family blessings and sacred rituals.",
-    image: "/assets/event-lagun.webp",
-    icon: "🪔"
   },
   {
     id: "haldi",

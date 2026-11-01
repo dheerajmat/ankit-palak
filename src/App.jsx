@@ -28,7 +28,6 @@ import RsvpSection from './components/RsvpSection';
 // Shared Components
 import OurStorySection from './components/OurStorySection';
 import VenueSection from './components/VenueSection';
-import GallerySection from './components/GallerySection';
 import FinaleScene from './components/FinaleScene';
 import SiteFooter from './components/SiteFooter';
 import EventModal from './components/EventModal';
@@ -195,7 +194,7 @@ export default function App() {
               {/* 4. Gilded Couple Portraits (Ankit & Palak) */}
               <CoupleGildedFrames />
 
-              {/* 5. Suspended Ceremony Boards (11 Ceremonies) */}
+              {/* 5. Suspended Ceremony Boards */}
               <HangingCeremonyBoards onSelectEvent={setSelectedEvent} />
 
               {/* 6. Royal Together, Forever Pavilion (Our Story) */}
@@ -215,13 +214,7 @@ export default function App() {
               {/* 10. Gratitude & Thank You Finale (Dhanyawad) */}
               <FinaleScene onReplay={handleReplay} theme={theme} />
 
-              {/* 11. Sacred Moments Wedding Gallery (Placed below Dhanyawad as requested) */}
-              <GallerySection
-                theme={theme}
-                onSelectImage={setSelectedGalleryIndex}
-              />
-
-              {/* 12. Royal Site Footer */}
+              {/* 11. Royal Site Footer */}
               <SiteFooter />
             </main>
           ) : (
@@ -240,10 +233,6 @@ export default function App() {
               <VenueSection />
               <RsvpSection />
               <FinaleScene onReplay={handleReplay} theme={theme} />
-              <GallerySection
-                theme={theme}
-                onSelectImage={setSelectedGalleryIndex}
-              />
               <SiteFooter />
             </main>
           )}

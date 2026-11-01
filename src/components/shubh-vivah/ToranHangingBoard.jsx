@@ -6,8 +6,6 @@ const CEREMONY_TAGLINES = {
   'mehendi': 'Fragrant Henna & Music',
   'engagement': 'Rings of Love & Sacred Vows',
   'sangeet': 'Musical Night of Glitz & Dance',
-  'dinner-day1': 'Royal Welcome Feast',
-  'lagun': 'Sacred Dawn Patrika Rituals',
   'haldi': 'Auspicious Turmeric Ritual',
   'bhaat': 'Maternal Blessings & Mayera',
   'carnival': 'Festive Pre-Wedding Mela',
@@ -26,7 +24,6 @@ function getCeremonyHeading(name) {
   if (name.includes('Wedding')) return { main: 'VIVAH', sub: 'RECEPTION' };
   if (name.includes('Carnival')) return { main: 'CARNIVAL', sub: 'FESTIVE MELA' };
   if (name.includes('Bhaat')) return { main: 'MAYERA', sub: 'BHAAT CEREMONY' };
-  if (name.includes('Lagun')) return { main: 'LAGUN', sub: 'PATRIKA RITUAL' };
   return { main: name.toUpperCase(), sub: 'CEREMONY' };
 }
 

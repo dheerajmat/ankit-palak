@@ -10,7 +10,6 @@ const svSections = [
   { id: 'invitation', label: 'Cordially Invited' },
   { id: 'rsvp-section', label: 'Will You Join Us (RSVP)' },
   { id: 'thank-you', label: 'Dhanyawad (Thank You)' },
-  { id: 'gallery', label: 'Sacred Moments Gallery' },
 ];
 
 const pastelSections = [
@@ -24,7 +23,6 @@ const pastelSections = [
   { id: 'venue', label: 'Venue & Directions' },
   { id: 'rsvp', label: 'RSVP' },
   { id: 'thank-you', label: 'Dhanyawad (Thank You)' },
-  { id: 'gallery', label: 'Moments & Details' },
 ];
 
 export default function NavDots({ activeId, theme = 'shubh-vivah' }) {

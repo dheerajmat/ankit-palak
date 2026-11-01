@@ -9,8 +9,6 @@ const CEREMONY_TAGLINES = {
   'mehendi': 'Fragrant Henna & Music',
   'engagement': 'Rings of Love & Sacred Promises',
   'sangeet': 'Musical Night of Glitz & Dance',
-  'dinner-day1': 'Royal Welcome Banquet',
-  'lagun': 'Sacred Dawn Patrika Rituals',
   'haldi': 'Auspicious Turmeric Ritual',
   'bhaat': 'Maternal Blessings & Mayera',
   'carnival': 'Festive Pre-Wedding Mela',

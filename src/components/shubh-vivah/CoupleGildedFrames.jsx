@@ -138,7 +138,7 @@ export default function CoupleGildedFrames() {
           <div className="sv-person-name">{coupleData.bride}</div>
           <div className="sv-person-role">The Bride</div>
           <div className="sv-person-family">
-            Daughter of Deepa Mathur &amp; Rakesh Mathur
+            Daughter of Mrs. Deepa Mathur &amp; Mr. Rakesh Mathur
           </div>
         </div>
       </div>

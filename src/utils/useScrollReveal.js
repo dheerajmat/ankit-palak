@@ -1,13 +1,13 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useCallback } from 'react';
 
 /**
  * useScrollReveal
- * High-performance IntersectionObserver hook for subtle, royal scroll entrance.
- * - Responsive triggers: on mobile (<= 768px), triggers proactively (rootMargin: '0px 0px -15px 0px', threshold: 0.04)
- *   so thumb-scrolling users immediately see elements start their smooth entrance without delay
- * - On desktop, triggers with stately threshold (rootMargin: '0px 0px -40px 0px', threshold: 0.08)
- * - Only reveals elements below the fold when user actually scrolls to them
- * - Unobserves once revealed for zero ongoing CPU/battery drain
+ * High-performance IntersectionObserver hook for royal scroll entrance animations.
+ * - Mobile (<= 768px): proactive trigger (rootMargin: '0px 0px -8px 0px', threshold: 0.03)
+ * - Desktop: stately trigger (rootMargin: '0px 0px -60px 0px', threshold: 0.06)
+ * - Respects prefers-reduced-motion
+ * - Unobserves on reveal for zero ongoing CPU drain
+ * - delay: optional ms delay before marking as revealed (for entrance staggering at section level)
  */
 export function useScrollReveal(options = {}) {
   const ref = useRef(null);
@@ -17,35 +17,43 @@ export function useScrollReveal(options = {}) {
     const el = ref.current;
     if (!el) return;
 
-    // Fallback if IntersectionObserver is not supported or reduced motion is preferred
+    // Fallback for no IntersectionObserver support
     if (typeof window === 'undefined' || !('IntersectionObserver' in window)) {
       setIsRevealed(true);
       return;
     }
 
+    // Respect reduced-motion preference
     if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       setIsRevealed(true);
       return;
     }
 
-    // Check if element is already in viewport on mount (e.g. hero section or page reload with scrollY > 0)
+    // Immediately reveal if element is already in viewport on mount
     const rect = el.getBoundingClientRect();
     const vh = window.innerHeight || document.documentElement.clientHeight;
-    
-    // Only reveal immediately if page is already scrolled down and element is in viewport
     if (window.scrollY > 80 && rect.top < vh && rect.bottom > 0) {
       setIsRevealed(true);
       return;
     }
 
     const isMobile = window.innerWidth < 768;
-    const defaultMargin = isMobile ? '0px 0px -15px 0px' : '0px 0px -40px 0px';
-    const defaultThreshold = isMobile ? 0.04 : 0.08;
+    const defaultMargin = isMobile ? '0px 0px -8px 0px' : '0px 0px -60px 0px';
+    const defaultThreshold = isMobile ? 0.03 : 0.06;
+    const delay = options.delay || 0;
+
+    const reveal = () => {
+      if (delay > 0) {
+        setTimeout(() => setIsRevealed(true), delay);
+      } else {
+        setIsRevealed(true);
+      }
+    };
 
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setIsRevealed(true);
+          reveal();
           observer.unobserve(entry.target);
         }
       },
@@ -57,14 +65,14 @@ export function useScrollReveal(options = {}) {
 
     observer.observe(el);
 
-    // Passive scroll check as a resilient fallback in case IntersectionObserver is delayed
+    // Passive scroll fallback for resilience
     const handleScrollCheck = () => {
       if (!ref.current) return;
       const r = ref.current.getBoundingClientRect();
       const currentVh = window.innerHeight || document.documentElement.clientHeight;
-      const triggerOffset = isMobile ? 15 : 40;
+      const triggerOffset = isMobile ? 8 : 60;
       if (r.top < currentVh - triggerOffset && r.bottom > 0) {
-        setIsRevealed(true);
+        reveal();
         window.removeEventListener('scroll', handleScrollCheck);
       }
     };
@@ -75,15 +83,108 @@ export function useScrollReveal(options = {}) {
       observer.disconnect();
       window.removeEventListener('scroll', handleScrollCheck);
     };
-  }, [options.rootMargin, options.threshold]);
+  }, [options.rootMargin, options.threshold, options.delay]);
 
   return [ref, isRevealed];
 }
 
 /**
+ * useStaggeredReveal
+ * Observes a container and progressively reveals child elements with
+ * configurable stagger delay. Returns [containerRef, revealedIndices].
+ *
+ * Options:
+ *   - selector: CSS selector for children to observe (default: '.sv-stagger-child')
+ *   - baseDelay: initial delay in ms (default: 0)
+ *   - stagger: delay between each child in ms (default: 120)
+ *   - threshold: IntersectionObserver threshold (default: 0.03)
+ *   - rootMargin: IntersectionObserver rootMargin
+ */
+export function useStaggeredReveal(options = {}) {
+  const containerRef = useRef(null);
+  const [revealedCount, setRevealedCount] = useState(0);
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    if (typeof window === 'undefined' || !('IntersectionObserver' in window)) {
+      return;
+    }
+
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      // Reveal all immediately
+      const children = container.querySelectorAll(options.selector || '.sv-stagger-child');
+      children.forEach(child => child.classList.add('sv-revealed'));
+      return;
+    }
+
+    const {
+      selector = '.sv-stagger-child',
+      baseDelay = 0,
+      stagger = 120,
+      threshold = 0.03,
+      rootMargin,
+    } = options;
+
+    const isMobile = window.innerWidth < 768;
+    const defaultMargin = rootMargin || (isMobile ? '0px 0px -8px 0px' : '0px 0px -40px 0px');
+
+    const children = Array.from(container.querySelectorAll(selector));
+    if (!children.length) return;
+
+    let sectionTriggered = false;
+
+    const triggerStagger = () => {
+      if (sectionTriggered) return;
+      sectionTriggered = true;
+
+      children.forEach((child, idx) => {
+        const delay = baseDelay + idx * stagger;
+        setTimeout(() => {
+          child.classList.add('sv-revealed');
+          setRevealedCount(c => c + 1);
+        }, delay);
+      });
+    };
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          triggerStagger();
+          observer.unobserve(entry.target);
+        }
+      },
+      { rootMargin: defaultMargin, threshold }
+    );
+
+    observer.observe(container);
+
+    // Scroll fallback
+    const handleScrollCheck = () => {
+      if (!containerRef.current) return;
+      const r = containerRef.current.getBoundingClientRect();
+      const vh = window.innerHeight || document.documentElement.clientHeight;
+      if (r.top < vh - (isMobile ? 8 : 40) && r.bottom > 0) {
+        triggerStagger();
+        window.removeEventListener('scroll', handleScrollCheck);
+      }
+    };
+    window.addEventListener('scroll', handleScrollCheck, { passive: true });
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener('scroll', handleScrollCheck);
+    };
+  }, [options.selector, options.baseDelay, options.stagger, options.threshold, options.rootMargin]);
+
+  return [containerRef, revealedCount];
+}
+
+/**
  * initScrollObserver
- * Lightweight utility to observe arbitrary elements with .sv-scroll-reveal
- * Useful for long streams of cards (e.g. ceremony cards or family cards)
+ * Lightweight utility to observe arbitrary elements with .sv-scroll-reveal class.
+ * Useful for long streams of cards (e.g. ceremony cards or family cards).
  */
 export function initScrollObserver(containerEl, selector = '.sv-scroll-reveal') {
   if (typeof window === 'undefined' || !('IntersectionObserver' in window) || !containerEl) {
@@ -94,8 +195,8 @@ export function initScrollObserver(containerEl, selector = '.sv-scroll-reveal') 
   if (!elements.length) return () => {};
 
   const isMobile = window.innerWidth < 768;
-  const defaultMargin = isMobile ? '0px 0px -15px 0px' : '0px 0px -40px 0px';
-  const defaultThreshold = isMobile ? 0.04 : 0.08;
+  const defaultMargin = isMobile ? '0px 0px -8px 0px' : '0px 0px -40px 0px';
+  const defaultThreshold = isMobile ? 0.03 : 0.06;
 
   const observer = new IntersectionObserver(
     (entries) => {
