@@ -7,7 +7,7 @@ export const coupleData = {
   dateText: "20 November 2026",
   targetDate: "2026-11-20T00:00:00+05:30",
   location: "Ajmer, Rajasthan",
-  hashtag: "#fromAMtoPM",
+  hashtag: "#from AM to PM",
   monogram: "assets/ap-monogram.webp",
   heroImage: "assets/hero-palace.webp",
   dividerImage: "assets/gold-divider.webp",

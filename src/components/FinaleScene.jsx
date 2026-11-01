@@ -14,15 +14,18 @@ export default function FinaleScene({ onReplay, theme = 'shubh-vivah' }) {
       data-scene="06"
       aria-label="Thank You and Blessings"
     >
-      <div className="section-index">
-        {isShubhVivah ? '॥ आभार एवं धन्यवाद ॥' : 'With Heartfelt Gratitude'}
-      </div>
-      <span className="floral a">{isShubhVivah ? '✿ ॐ ✿' : '✿ ❀ ✿'}</span>
-      <span className="floral b">{isShubhVivah ? 'ॐ' : '❀'}</span>
-      <span className="floral c">{isShubhVivah ? '✿ ॐ ✿' : '✿ ❀'}</span>
+      <span className="floral a" aria-hidden="true">{isShubhVivah ? '✿ ॐ ✿' : '✿ ❀ ✿'}</span>
+      <span className="floral c" aria-hidden="true">{isShubhVivah ? '✿ ॐ ✿' : '✿ ❀'}</span>
 
       <div className="content arch sv-thankyou-arch">
-        <div className="eyebrow">
+        {/* Auspicious Invocation safely inside the card with ample top margin */}
+        <div className="sv-thankyou-kicker">
+          <span className="sv-floret" aria-hidden="true">❖</span>
+          <span>{isShubhVivah ? '॥ ॐ आभार एवं धन्यवाद ॐ ॥' : 'With Heartfelt Gratitude'}</span>
+          <span className="sv-floret" aria-hidden="true">❖</span>
+        </div>
+
+        <div className="eyebrow sv-thankyou-eyebrow">
           {isShubhVivah ? 'WITH REVERENCE, LOVE & GRATITUDE' : 'With Our Deepest Gratitude'}
         </div>
 

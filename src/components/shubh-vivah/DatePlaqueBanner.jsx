@@ -187,9 +187,6 @@ export default function DatePlaqueBanner() {
               <div className={`sv-slot-inner-lacquer ${isSeconds && tickPulse ? 'tick-pulse' : ''}`}>
                 <span className="sv-slot-digits">{val}</span>
               </div>
-
-              {/* Themed Slot Label */}
-              <span className="sv-slot-label">{slot.label}</span>
             </div>
           );
         })}

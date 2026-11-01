@@ -152,7 +152,7 @@ export default function CoupleGildedFrames() {
         </div>
         <div className="sv-couple-title-wrap">
           <h3 className="sv-couple-title sv-couple-hashtag-heading">
-            <span className="sv-hashtag-symbol">#</span>fromAMtoPM
+            <span className="sv-hashtag-symbol">#</span>from&nbsp;&nbsp;AM&nbsp;&nbsp;to&nbsp;&nbsp;PM
           </h3>
         </div>
       </div>
