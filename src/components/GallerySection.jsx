@@ -1,11 +1,13 @@
 import React from 'react';
 import { galleryData, shubhVivahGalleryData } from '../data/weddingData';
+import { useScrollReveal } from '../utils/useScrollReveal';
 
 export default function GallerySection({ theme = 'shubh-vivah', onSelectImage }) {
+  const [sectionRef, isVisible] = useScrollReveal();
   const items = theme === 'shubh-vivah' ? shubhVivahGalleryData : galleryData;
 
   return (
-    <section className="long-section" id="gallery">
+    <section ref={sectionRef} className={`long-section ${isVisible ? 'sv-section-animated' : ''}`} id="gallery">
       <div className="long-inner">
         <div className="section-kicker">
           {theme === 'shubh-vivah' ? 'SACRED MOMENTS & MEMORIES' : 'A LITTLE ROMANCE, A LOT OF JOY'}

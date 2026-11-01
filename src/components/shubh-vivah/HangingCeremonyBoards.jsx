@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { eventsData } from '../../data/weddingData';
 import ToranHangingBoard from './ToranHangingBoard';
 import SunflowerStepperTrack from './SunflowerStepperTrack';
+import { useScrollReveal, initScrollObserver } from '../../utils/useScrollReveal';
 
 const CEREMONY_TAGLINES = {
   'ganesh-sthapana': 'Auspicious Divine Invocation',
@@ -22,7 +23,7 @@ export default function HangingCeremonyBoards() {
   const [desktopOffsets, setDesktopOffsets] = useState([]);
   const [mobileOffsets, setMobileOffsets] = useState([]);
 
-  const containerRef = useRef(null);
+  const [containerRef, isVisible] = useScrollReveal({ threshold: 0.02, rootMargin: '50px 0px -25px 0px' });
   const desktopTimelineRef = useRef(null);
   const mobileTimelineRef = useRef(null);
   const desktopRowRefs = useRef(new Map());
@@ -86,6 +87,14 @@ export default function HangingCeremonyBoards() {
     };
   }, [updateLayoutPositions]);
 
+  // Progressive scroll reveal for mobile ceremony cards
+  useEffect(() => {
+    const mobileEl = mobileTimelineRef.current;
+    if (!mobileEl) return;
+    const cleanup = initScrollObserver(mobileEl, '.sv-mobile-ceremony-card');
+    return cleanup;
+  }, []);
+
   // Track active ceremony on scroll without forcing layout recalcs on every frame
   useEffect(() => {
     let ticking = false;
@@ -147,7 +156,7 @@ export default function HangingCeremonyBoards() {
   };
 
   return (
-    <section className="sv-ceremonies-section" id="ceremonies" ref={containerRef}>
+    <section className={`sv-ceremonies-section ${isVisible ? 'sv-section-animated' : ''}`} id="ceremonies" ref={containerRef}>
       <div className="sv-ceremonies-container">
         {/* Exact Section Header Matching Original Invitima */}
         <div className="sv-ceremonies-header">
@@ -299,7 +308,7 @@ export default function HangingCeremonyBoards() {
                     if (el) mobileCardRefs.current.set(evt.id, el);
                     else mobileCardRefs.current.delete(evt.id);
                   }}
-                  className={`sv-mobile-ceremony-card ${isActive ? 'is-active-card' : ''}`}
+                  className={`sv-mobile-ceremony-card sv-scroll-reveal ${isActive ? 'is-active-card' : ''}`}
                 >
                   {/* Event Pill */}
                   <div className="sv-mobile-badge-top">

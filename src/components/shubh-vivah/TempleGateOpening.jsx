@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import confetti from 'canvas-confetti';
 import { coupleData } from '../../data/weddingData';
+import { weddingAudio } from '../../utils/audio';
 
 export default function TempleGateOpening({ isOpened, onOpen }) {
   const [isPortrait, setIsPortrait] = useState(false);
@@ -42,6 +43,13 @@ export default function TempleGateOpening({ isOpened, onOpen }) {
 
     // Reset scroll to top immediately so nothing opens from below
     window.scrollTo({ top: 0, behavior: 'instant' });
+
+    // Play royal background flute instrumental music on gate open
+    try {
+      weddingAudio.play();
+    } catch {
+      // ignore
+    }
 
     // Launch celebratory gold and crimson confetti
     try {

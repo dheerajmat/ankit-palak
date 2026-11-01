@@ -3,11 +3,11 @@ export const coupleData = {
   bride: "Palak",
   names: "Ankit & Palak",
   groomParents: "Son of Lt. Mrs. Rashmi & Mr. Pradeep Mathur",
-  brideParents: "Daughter of Smt. & Shri Verma",
+  brideParents: "Daughter of Deepa Mathur & Rakesh Mathur",
   dateText: "20 November 2026",
   targetDate: "2026-11-20T00:00:00+05:30",
   location: "Ajmer, Rajasthan",
-  hashtag: "#AnkitWedsPalak",
+  hashtag: "#fromAMtoPM",
   monogram: "assets/ap-monogram.webp",
   heroImage: "assets/hero-palace.webp",
   dividerImage: "assets/gold-divider.webp",
@@ -36,7 +36,66 @@ export const groomsFamilyData = [
   }
 ];
 
+export const bridesFamilyData = [
+  {
+    id: "bride-father",
+    role: "FATHER OF THE BRIDE",
+    name: "RAKESH MATHUR",
+    image: "/assets/shubh-vivah/family/man.webp"
+  },
+  {
+    id: "bride-mother",
+    role: "MOTHER OF THE BRIDE",
+    name: "DEEPA MATHUR",
+    image: "/assets/shubh-vivah/family/woman.webp"
+  },
+  {
+    id: "bride-brother",
+    role: "BROTHER OF THE BRIDE",
+    name: "CHINMAY MATHUR",
+    image: "/assets/shubh-vivah/family/man.webp"
+  }
+];
+
 export const venueData = {
+  bravia: {
+    id: "bravia",
+    name: "Bravia Hotel",
+    role: "Pre-Wedding & Baraat Celebrations",
+    address: "Panchsheel Nagar",
+    city: "Ajmer, Rajasthan",
+    dates: "19 & 20 November 2026",
+    mapUrl: "https://maps.app.goo.gl/jwVDGoxKc6mFUmZp6",
+    mapQuery: "Bravia+Hotel+Panchsheel+Nagar+Ajmer",
+    tagline: "Festive Pre-Wedding Mela & Royal Baraat Venue",
+    ceremonies: [
+      { name: "Ganesh Sthapana", date: "19 Nov", time: "8:30 AM onwards", icon: "🔱" },
+      { name: "Mehendi Ceremony", date: "19 Nov", time: "11:00 AM onwards", icon: "🌿" },
+      { name: "Haldi Hues (Tel Manda)", date: "20 Nov", time: "11:00 AM", icon: "✨" },
+      { name: "Bhaat (Mayera)", date: "20 Nov", time: "2:00 PM", icon: "🎁" },
+      { name: "Carnival Celebration", date: "20 Nov", time: "4:00 PM onwards", icon: "🎪" },
+      { name: "Grand Baraat", date: "20 Nov", time: "7:00 PM onwards", icon: "🎺" }
+    ]
+  },
+  grandXenia: {
+    id: "grand-xenia",
+    name: "Hotel Grand Xenia",
+    role: "Sangeet, Reception & Sacred Phere",
+    address: "Foy Sagar Road, Hathi Khera",
+    city: "Ajmer, Rajasthan 305001",
+    dates: "19 & 20 November 2026",
+    mapUrl: "https://maps.google.com/?q=Hotel+Grand+Xenia+Foy+Sagar+Road+Hathi+Khera+Ajmer+Rajasthan",
+    mapQuery: "Hotel+Grand+Xenia+Foy+Sagar+Road+Hathi+Khera+Ajmer+Rajasthan",
+    tagline: "Grand Royal Palace Ambience & Sacred Matrimony",
+    ceremonies: [
+      { name: "Sagai (Engagement)", date: "19 Nov", time: "5:30 PM", icon: "💍" },
+      { name: "Sangeet Sandhya", date: "19 Nov", time: "6:00 PM onwards", icon: "🪕" },
+      { name: "Royal Dinner Banquet", date: "19 Nov", time: "8:30 PM onwards", icon: "🍽️" },
+      { name: "Wedding Dinner & Reception", date: "20 Nov", time: "9:30 PM onwards", icon: "✨" },
+      { name: "Seven Vows (Sacred Phere)", date: "20 Nov", time: "Midnight onwards", icon: "🔥" }
+    ]
+  },
+  // Retained aliases for backward compatibility with DetailsScene
   primary: {
     name: "Hotel Grand Xenia",
     title: "Wedding Celebration Venue",
@@ -44,20 +103,18 @@ export const venueData = {
     city: "Ajmer, Rajasthan 305001",
     date: "20 November 2026 · Evening celebration",
     mapQuery: "Hotel+Grand+Xenia+Foy+Sagar+Road+Hathi+Khera+Ajmer+Rajasthan",
-    image: "assets/venue-grand-xenia.webp",
-    features: ["Grand Royal Palace Ambience", "Exquisite Dining Lawns", "Spacious Banquets", "Ample Guest Parking"]
+    mapUrl: "https://maps.google.com/?q=Hotel+Grand+Xenia+Foy+Sagar+Road+Hathi+Khera+Ajmer+Rajasthan",
+    features: []
   },
   secondary: {
     name: "Bravia Hotel",
-    title: "Pre-Wedding Celebration Venue",
+    title: "Pre-Wedding & Baraat Venue",
     address: "Panchsheel Nagar",
     city: "Ajmer, Rajasthan",
     date: "19 & 20 November 2026",
     mapQuery: "Bravia+Hotel+Panchsheel+Nagar+Ajmer",
     mapUrl: "https://maps.app.goo.gl/jwVDGoxKc6mFUmZp6",
-    image: "assets/venue-bravia.webp",
-    note: "Used for selected pre-wedding ceremonies including Ganesh Sthapana, Mehendi, Tel Manda / Haldi, Bhaat, and Carnival.",
-    features: ["Contemporary Luxury", "Private Event Halls", "Festive Atmosphere"]
+    features: []
   }
 };
 
@@ -201,8 +258,9 @@ export const eventsData = [
     date: "20 Nov 2026",
     dayGroup: "day2",
     time: "7:00 PM onwards",
-    venue: "Hotel Grand Xenia, Foy Sagar Road, Ajmer",
-    mapQuery: "Hotel+Grand+Xenia+Foy+Sagar+Road+Hathi+Khera+Ajmer+Rajasthan",
+    venue: "Bravia Hotel, Panchsheel Nagar, Ajmer",
+    mapQuery: "Bravia+Hotel+Panchsheel+Nagar+Ajmer",
+    mapUrl: "https://maps.app.goo.gl/jwVDGoxKc6mFUmZp6",
     desc: "Join the grand royal procession as we dance towards forever.",
     image: "assets/event-baraat.webp",
     dressCode: "Sherwani / Royal Bandhgala / Safa",

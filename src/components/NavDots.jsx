@@ -1,6 +1,19 @@
 import React from 'react';
 
-const sections = [
+const svSections = [
+  { id: 'mandap-hero', label: 'Mandap & Hero' },
+  { id: 'date-banner', label: 'Auspicious Date & Countdown' },
+  { id: 'couple-gilded', label: 'The Groom & Bride' },
+  { id: 'ceremonies', label: 'Wedding Ceremonies' },
+  { id: 'our-story', label: 'Together, Forever' },
+  { id: 'venue', label: 'The Wedding Venues' },
+  { id: 'gallery', label: 'Sacred Moments Gallery' },
+  { id: 'invitation', label: 'Cordially Invited' },
+  { id: 'rsvp-section', label: 'Will You Join Us (RSVP)' },
+  { id: 'thank-you', label: 'Thank You & Blessings' },
+];
+
+const pastelSections = [
   { id: 'opening', label: 'Opening Envelope' },
   { id: 'ganesha', label: 'Divine Blessings' },
   { id: 'invite', label: 'The Wedding' },
@@ -11,10 +24,12 @@ const sections = [
   { id: 'venue', label: 'Venue & Directions' },
   { id: 'gallery', label: 'Moments & Details' },
   { id: 'rsvp', label: 'RSVP' },
-  { id: 'finale', label: 'Warmest Wishes' },
+  { id: 'thank-you', label: 'Thank You' },
 ];
 
-export default function NavDots({ activeId }) {
+export default function NavDots({ activeId, theme = 'shubh-vivah' }) {
+  const sections = theme === 'shubh-vivah' ? svSections : pastelSections;
+
   const scrollTo = (id) => {
     const el = document.getElementById(id);
     if (el) el.scrollIntoView({ behavior: 'smooth' });
@@ -35,4 +50,3 @@ export default function NavDots({ activeId }) {
     </nav>
   );
 }
-

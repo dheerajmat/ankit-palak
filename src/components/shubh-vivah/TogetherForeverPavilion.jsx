@@ -1,9 +1,17 @@
 import React from 'react';
 import { coupleData } from '../../data/weddingData';
+import { useScrollReveal } from '../../utils/useScrollReveal';
 
 export default function TogetherForeverPavilion() {
+  const [sectionRef, isVisible] = useScrollReveal();
+
   return (
-    <section className="sv-together-section" id="our-story" aria-label="Together, Forever Section">
+    <section
+      ref={sectionRef}
+      className={`sv-together-section ${isVisible ? 'sv-section-animated' : ''}`}
+      id="our-story"
+      aria-label="Together, Forever Section"
+    >
       <div className="sv-together-container">
         {/* 1. Royal Section Header */}
         <div className="sv-together-header">

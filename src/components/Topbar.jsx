@@ -1,17 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { weddingAudio } from '../utils/audio';
 
 export default function Topbar({ currentScene = "01 / 06" }) {
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(weddingAudio.isPlaying);
+
+  useEffect(() => {
+    return weddingAudio.subscribe((playing) => {
+      setIsPlaying(playing);
+    });
+  }, []);
 
   const handleMusicToggle = async () => {
     try {
       if (isPlaying) {
         weddingAudio.pause();
-        setIsPlaying(false);
       } else {
         await weddingAudio.play();
-        setIsPlaying(true);
       }
     } catch {
       // Audio error

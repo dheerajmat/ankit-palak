@@ -8,10 +8,13 @@ import TempleGateOpening from './components/shubh-vivah/TempleGateOpening';
 import SunsetMandapHero from './components/shubh-vivah/SunsetMandapHero';
 import DatePlaqueBanner from './components/shubh-vivah/DatePlaqueBanner';
 import CoupleGildedFrames from './components/shubh-vivah/CoupleGildedFrames';
-import SwingingBellsShrine from './components/shubh-vivah/SwingingBellsShrine';
 import HangingCeremonyBoards from './components/shubh-vivah/HangingCeremonyBoards';
 import TogetherForeverPavilion from './components/shubh-vivah/TogetherForeverPavilion';
+import YouAreInvitedSection from './components/shubh-vivah/YouAreInvitedSection';
 import WishesWallRsvp from './components/shubh-vivah/WishesWallRsvp';
+
+// Standalone Royal Families Page
+import RoyalFamiliesPage from './components/RoyalFamiliesPage';
 
 // Pastel Palace Envelope Theme Components
 import EnvelopeScene from './components/EnvelopeScene';
@@ -35,6 +38,17 @@ export default function App() {
     return localStorage.getItem('selected_wedding_theme') || 'shubh-vivah';
   });
 
+  const [currentView, setCurrentView] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const hash = window.location.hash;
+      const search = window.location.search;
+      if (hash === '#family' || search.includes('page=family')) {
+        return 'family';
+      }
+    }
+    return 'invitation';
+  });
+
   const [isGateOpened, setIsGateOpened] = useState(() => {
     if (typeof window !== 'undefined') {
       const params = new URLSearchParams(window.location.search);
@@ -55,10 +69,54 @@ export default function App() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const navigateToFamily = () => {
+    try {
+      window.history.pushState({ page: 'family' }, '', '#family');
+    } catch {
+      // ignore
+    }
+    setCurrentView('family');
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  };
+
+  const navigateToInvitation = () => {
+    try {
+      window.history.pushState({ page: 'invitation' }, '', '#invitation');
+    } catch {
+      // ignore
+    }
+    setCurrentView('invitation');
+    setTimeout(() => {
+      const el = document.getElementById('invitation');
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }, 60);
+  };
+
   useEffect(() => {
+    const handlePopState = () => {
+      const hash = window.location.hash;
+      if (hash === '#family') {
+        setCurrentView('family');
+        window.scrollTo({ top: 0, behavior: 'instant' });
+      } else {
+        setCurrentView('invitation');
+      }
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
+
+  useEffect(() => {
+    if (currentView !== 'invitation') return;
+
     const sections = Array.from(
       document.querySelectorAll(
-        '.screen, .long-section, .sv-hero-section-exact, .sv-banner-section, .sv-couple-section, .sv-shrine-section, .sv-ceremonies-section, .sv-together-section'
+        '.screen, .long-section, .sv-hero-section-exact, .sv-banner-section, .sv-couple-section, .sv-ceremonies-section, .sv-together-section, .sv-venue-section, .sv-venues-section, .sv-invitation-section, .sv-rsvp-section'
       )
     );
     const totalScenes = Math.max(sections.length, 6);
@@ -77,12 +135,12 @@ export default function App() {
           }
         });
       },
-      { threshold: 0.3 }
+      { threshold: 0.15 }
     );
 
     sections.forEach((s) => observer.observe(s));
     return () => observer.disconnect();
-  }, [theme, isGateOpened]);
+  }, [theme, isGateOpened, currentView]);
 
   const handleReplay = () => {
     if (theme === 'shubh-vivah') {
@@ -105,91 +163,101 @@ export default function App() {
         currentScene={currentSceneText}
       />
 
-      {/* Floating Section Navigation Dots */}
-      <NavDots activeId={activeScene} />
-
-      {theme === 'shubh-vivah' ? (
+      {currentView === 'family' ? (
         /* ========================================================
-           SHUBH VIVAH (TEMPLE MANDAP & 3D GATE THEME)
+           SEPARATE PAGE: THE ROYAL FAMILIES
            ======================================================== */
-        <main>
-          {/* 1. 3D Carved Mandir Gate Opening */}
-          <TempleGateOpening
-            isOpened={isGateOpened}
-            onOpen={() => setIsGateOpened(true)}
-          />
-
-          {/* 2. Sunset Marigold Mandap Hero */}
-          <SunsetMandapHero isGateOpened={isGateOpened} />
-
-          {/* 3. Samai-Lit Date Banner & Live Countdown */}
-          <DatePlaqueBanner />
-
-          {/* 4. Gilded Couple Portraits (Ankit & Palak) */}
-          <CoupleGildedFrames />
-
-          {/* 5. The Groom's Family (Royal Temple Arches) */}
-          <SwingingBellsShrine />
-
-          {/* 6. Suspended Ceremony Boards (11 Ceremonies) */}
-          <HangingCeremonyBoards onSelectEvent={setSelectedEvent} />
-
-          {/* 7. Royal Together, Forever Pavilion (Our Story) */}
-          <TogetherForeverPavilion />
-
-          {/* 8. Venue Showcase (Grand Xenia & Bravia Hotel) */}
-          <VenueSection />
-
-          {/* 9. Arched Gallery & Lightbox */}
-          <GallerySection
-            theme={theme}
-            onSelectImage={setSelectedGalleryIndex}
-          />
-
-          {/* 10. RSVP & Interactive Guest Wishes Wall */}
-          <WishesWallRsvp />
-
-          {/* 11. Finale & Replay */}
-          <FinaleScene onReplay={handleReplay} theme={theme} />
-        </main>
+        <RoyalFamiliesPage onBackToInvitation={navigateToInvitation} />
       ) : (
         /* ========================================================
-           PASTEL PALACE (ROYAL ENVELOPE THEME)
+           MAIN INVITATION MULTI-SECTION FLOW
            ======================================================== */
-        <main>
-          <EnvelopeScene
-            isOpened={isEnvelopeOpened}
-            onOpen={() => setIsEnvelopeOpened(true)}
+        <>
+          {/* Floating Section Navigation Dots */}
+          <NavDots activeId={activeScene} theme={theme} />
+
+          {theme === 'shubh-vivah' ? (
+            /* SHUBH VIVAH (TEMPLE MANDAP & 3D GATE THEME) */
+            <main>
+              {/* 1. 3D Carved Mandir Gate Opening */}
+              <TempleGateOpening
+                isOpened={isGateOpened}
+                onOpen={() => setIsGateOpened(true)}
+              />
+
+              {/* 2. Sunset Marigold Mandap Hero */}
+              <SunsetMandapHero isGateOpened={isGateOpened} />
+
+              {/* 3. Samai-Lit Date Banner & Live Countdown */}
+              <DatePlaqueBanner />
+
+              {/* 4. Gilded Couple Portraits (Ankit & Palak) */}
+              <CoupleGildedFrames />
+
+              {/* 5. Suspended Ceremony Boards (11 Ceremonies) */}
+              <HangingCeremonyBoards onSelectEvent={setSelectedEvent} />
+
+              {/* 6. Royal Together, Forever Pavilion (Our Story) */}
+              <TogetherForeverPavilion />
+
+              {/* 7. Venue Showcase (Grand Xenia & Bravia Hotel) */}
+              <VenueSection />
+
+              {/* 8. Arched Gallery & Lightbox */}
+              <GallerySection
+                theme={theme}
+                onSelectImage={setSelectedGalleryIndex}
+              />
+
+              {/* 9. Sacred Royal Invitation (You Are Cordially Invited) */}
+              <YouAreInvitedSection
+                onOpenFamilyPage={navigateToFamily}
+              />
+
+              {/* 10. RSVP Confirmation (Will You Join Us?) */}
+              <WishesWallRsvp />
+
+              {/* 11. Gratitude & Thank You Finale */}
+              <FinaleScene onReplay={handleReplay} theme={theme} />
+            </main>
+          ) : (
+            /* PASTEL PALACE (ROYAL ENVELOPE THEME) */
+            <main>
+              <EnvelopeScene
+                isOpened={isEnvelopeOpened}
+                onOpen={() => setIsEnvelopeOpened(true)}
+              />
+              <GaneshaScene />
+              <InviteScene />
+              <CoupleScene />
+              <DetailsScene />
+              <CelebrationsSection onSelectEvent={setSelectedEvent} />
+              <OurStorySection />
+              <VenueSection />
+              <GallerySection
+                theme={theme}
+                onSelectImage={setSelectedGalleryIndex}
+              />
+              <RsvpSection />
+              <FinaleScene onReplay={handleReplay} theme={theme} />
+            </main>
+          )}
+
+          {/* Ceremony Details Modal */}
+          <EventModal
+            event={selectedEvent}
+            onClose={() => setSelectedEvent(null)}
           />
-          <GaneshaScene />
-          <InviteScene />
-          <CoupleScene />
-          <DetailsScene />
-          <CelebrationsSection onSelectEvent={setSelectedEvent} />
-          <OurStorySection />
-          <VenueSection />
-          <GallerySection
+
+          {/* Fullscreen Lightbox Modal */}
+          <LightboxModal
             theme={theme}
-            onSelectImage={setSelectedGalleryIndex}
+            selectedIndex={selectedGalleryIndex}
+            onClose={() => setSelectedGalleryIndex(null)}
+            onNavigate={setSelectedGalleryIndex}
           />
-          <RsvpSection />
-          <FinaleScene onReplay={handleReplay} theme={theme} />
-        </main>
+        </>
       )}
-
-      {/* Ceremony Details Modal */}
-      <EventModal
-        event={selectedEvent}
-        onClose={() => setSelectedEvent(null)}
-      />
-
-      {/* Fullscreen Lightbox Modal */}
-      <LightboxModal
-        theme={theme}
-        selectedIndex={selectedGalleryIndex}
-        onClose={() => setSelectedGalleryIndex(null)}
-        onNavigate={setSelectedGalleryIndex}
-      />
     </div>
   );
 }

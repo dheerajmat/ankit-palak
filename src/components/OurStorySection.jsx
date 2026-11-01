@@ -1,9 +1,12 @@
 import React from 'react';
 import { coupleData } from '../data/weddingData';
+import { useScrollReveal } from '../utils/useScrollReveal';
 
 export default function OurStorySection() {
+  const [sectionRef, isVisible] = useScrollReveal();
+
   return (
-    <section className="long-section" id="our-story">
+    <section ref={sectionRef} className={`long-section ${isVisible ? 'sv-section-animated' : ''}`} id="our-story">
       <div className="long-inner">
         <div className="section-kicker">A new chapter begins</div>
         <h2 className="section-title">Together, Forever</h2>

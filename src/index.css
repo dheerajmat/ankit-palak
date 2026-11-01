@@ -21,8 +21,9 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-snap-type: y proximity;
-  scroll-padding-top: 20px;
+  scroll-padding-top: 60px;
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
@@ -32,6 +33,7 @@ body {
   font-family: 'Cormorant Garamond', Georgia, serif;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+  -webkit-overflow-scrolling: touch;
 }
 
 button {
@@ -124,7 +126,6 @@ textarea:focus-visible {
   justify-content: center;
   padding: clamp(34px, 6vw, 76px) 20px;
   overflow: hidden;
-  scroll-snap-align: start;
   background: radial-gradient(ellipse at 50% 42%, #fffefaee 0%, #fbefeddd 58%, #f3dfe2dd 100%);
 }
 
@@ -813,7 +814,6 @@ p {
   align-items: center;
   justify-content: center;
   background-image: linear-gradient(145deg, #fffaf7f5, #f7e8e9f2 72%, #edf0e8f5);
-  scroll-snap-align: start;
   overflow: hidden;
 }
 
@@ -1399,6 +1399,39 @@ p {
   }
   .arch {
     padding: 40px 18px 32px;
+  }
+}
+
+/* ========================================================
+   UNIFIED SMOOTH SCROLL REVEAL UTILITY CLASSES (LUXURIOUS & ROYAL)
+   ======================================================== */
+.sv-scroll-reveal,
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 1.3s cubic-bezier(0.16, 1, 0.3, 1), transform 1.3s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.sv-section-animated .sv-scroll-reveal,
+.sv-section-animated .reveal-on-scroll,
+.sv-scroll-reveal.is-revealed,
+.reveal-on-scroll.is-revealed {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+.sv-stagger-1 { transition-delay: 0.15s; }
+.sv-stagger-2 { transition-delay: 0.30s; }
+.sv-stagger-3 { transition-delay: 0.45s; }
+.sv-stagger-4 { transition-delay: 0.60s; }
+.sv-stagger-5 { transition-delay: 0.75s; }
+
+@media (max-width: 768px) {
+  .sv-scroll-reveal,
+  .reveal-on-scroll {
+    transform: translateY(28px);
+    transition-duration: 1.25s;
   }
 }
 

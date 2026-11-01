@@ -1,107 +1,132 @@
-// Web Audio API romantic melodic synthesizer
-// Plays delicate arpeggios on sine and triangle waves with soft envelopes
+// Background Audio Player for Royal Wedding Website
+// Plays Rohit Kushwaha's Flute Instrumental Cover of A R Rahman's "Dam Tara Dam Tara"
+// Automatically pauses when browser tab is inactive, minimized, or in recent tabs
+// Automatically resumes only when the tab is live and active
 
 class WeddingAudioPlayer {
   constructor() {
-    this.audioCtx = null;
-    this.masterGain = null;
+    this.audio = null;
     this.isPlaying = false;
-    this.timer = null;
-    this.noteIndex = 0;
-    this.notes = [
-      261.63, // C4
-      329.63, // E4
-      392.00, // G4
-      523.25, // C5
-      392.00, // G4
-      329.63, // E4
-      293.66, // D4
-      349.23, // F4
-      440.00, // A4
-      523.25, // C5
-      440.00, // A4
-      349.23, // F4
-      392.00, // G4
-      493.88, // B4
-      587.33, // D5
-      493.88  // B4
-    ];
+    this.userWantsAudio = false;
+    this.wasPlayingBeforeBackground = false;
+    this.listeners = new Set();
+    this.src = '/assets/wedding-bg-music.mp3';
+    this.isInitialized = false;
+
+    // Initialize lifecycle listeners as soon as window/document is available
+    if (typeof window !== 'undefined' && typeof document !== 'undefined') {
+      this.setupVisibilityListeners();
+    }
+  }
+
+  setupVisibilityListeners() {
+    // 1. Page Visibility API: Detect tab switch, minimize, and mobile recent-apps switcher
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'hidden') {
+        // Tab is hidden or in recent tabs / background: stop audio immediately
+        if (this.isPlaying) {
+          this.wasPlayingBeforeBackground = true;
+          if (this.audio) {
+            this.audio.pause();
+          }
+        }
+      } else if (document.visibilityState === 'visible') {
+        // Tab is live and active again: resume only if it was actively playing before leaving
+        if (this.wasPlayingBeforeBackground && this.userWantsAudio) {
+          this.wasPlayingBeforeBackground = false;
+          if (this.audio) {
+            this.audio.play().catch(() => {
+              // Ignore autoplay policy if browser requires a new gesture
+            });
+          }
+        }
+      }
+    });
+
+    // 2. Mobile Page Lifecycle / Tab Close / Navigation
+    window.addEventListener('pagehide', () => {
+      if (this.audio) {
+        this.audio.pause();
+      }
+    });
+
+    window.addEventListener('beforeunload', () => {
+      if (this.audio) {
+        this.audio.pause();
+      }
+    });
   }
 
   init() {
-    if (!this.audioCtx) {
-      const AudioContextClass = window.AudioContext || window.webkitAudioContext;
-      if (AudioContextClass) {
-        this.audioCtx = new AudioContextClass();
-        this.masterGain = this.audioCtx.createGain();
-        this.masterGain.gain.setValueAtTime(0.55, this.audioCtx.currentTime);
-        this.masterGain.connect(this.audioCtx.destination);
+    if (this.audio || typeof window === 'undefined') return;
+
+    this.audio = new Audio(this.src);
+    this.audio.loop = true;
+    this.audio.volume = 0.6;
+    this.audio.preload = 'auto';
+
+    this.audio.addEventListener('play', () => {
+      this.isPlaying = true;
+      this.notify();
+    });
+
+    this.audio.addEventListener('pause', () => {
+      this.isPlaying = false;
+      this.notify();
+    });
+
+    this.audio.addEventListener('ended', () => {
+      this.isPlaying = false;
+      this.notify();
+    });
+  }
+
+  subscribe(callback) {
+    this.listeners.add(callback);
+    callback(this.isPlaying);
+    return () => this.listeners.delete(callback);
+  }
+
+  notify() {
+    this.listeners.forEach((cb) => {
+      try {
+        cb(this.isPlaying);
+      } catch {
+        // ignore
       }
-    }
+    });
   }
-
-  makeNote(freq, start, duration, volume, type = 'sine') {
-    if (!this.audioCtx || !this.masterGain) return;
-    try {
-      const osc = this.audioCtx.createOscillator();
-      const gain = this.audioCtx.createGain();
-
-      osc.type = type;
-      osc.frequency.setValueAtTime(freq, start);
-
-      gain.gain.setValueAtTime(0.0001, start);
-      gain.gain.exponentialRampToValueAtTime(volume, start + 0.16);
-      gain.gain.exponentialRampToValueAtTime(0.0001, start + duration);
-
-      osc.connect(gain);
-      gain.connect(this.masterGain);
-
-      osc.start(start);
-      osc.stop(start + duration + 0.05);
-    } catch {
-      // Audio node scheduling guard
-    }
-  }
-
-  step = () => {
-    if (!this.isPlaying || !this.audioCtx) return;
-    const t = this.audioCtx.currentTime;
-    const f = this.notes[this.noteIndex % this.notes.length];
-
-    // Primary bell tone
-    this.makeNote(f, t, 2.4, 0.024, 'sine');
-    // Soft high harmonic overtone
-    this.makeNote(f * 2, t + 0.08, 1.5, 0.008, 'triangle');
-    // Warm bass foundation every 3rd note
-    if (this.noteIndex % 3 === 0) {
-      this.makeNote(f / 2, t, 1.2, 0.014, 'sine');
-    }
-
-    this.noteIndex++;
-    this.timer = setTimeout(this.step, 1450);
-  };
 
   async play() {
     this.init();
-    if (!this.audioCtx) return false;
-    if (this.audioCtx.state === 'suspended') {
-      await this.audioCtx.resume();
+    if (!this.audio) return false;
+    this.userWantsAudio = true;
+    this.wasPlayingBeforeBackground = false;
+
+    // Do not attempt to play if the tab is currently in the background or hidden
+    if (typeof document !== 'undefined' && document.visibilityState === 'hidden') {
+      this.wasPlayingBeforeBackground = true;
+      return false;
     }
-    this.isPlaying = true;
-    this.masterGain.gain.cancelScheduledValues(this.audioCtx.currentTime);
-    this.masterGain.gain.setTargetAtTime(0.55, this.audioCtx.currentTime, 0.3);
-    this.step();
-    return true;
+
+    try {
+      await this.audio.play();
+      this.isPlaying = true;
+      this.notify();
+      return true;
+    } catch (err) {
+      console.warn('Audio autoplay requires user interaction:', err);
+      return false;
+    }
   }
 
   pause() {
-    this.isPlaying = false;
-    if (this.timer) {
-      clearTimeout(this.timer);
-      this.timer = null;
-    }
-    if (this.masterGain && this.audioCtx) {
-      this.masterGain.gain.setTargetAtTime(0.0001, this.audioCtx.currentTime, 0.15);
+    this.userWantsAudio = false;
+    this.wasPlayingBeforeBackground = false;
+    if (this.audio) {
+      this.audio.pause();
+      this.isPlaying = false;
+      this.notify();
     }
   }
 
@@ -116,4 +141,3 @@ class WeddingAudioPlayer {
 }
 
 export const weddingAudio = new WeddingAudioPlayer();
-

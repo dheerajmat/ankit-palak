@@ -1,9 +1,17 @@
 import React from 'react';
 import confetti from 'canvas-confetti';
+import { weddingAudio } from '../utils/audio';
 
 export default function EnvelopeScene({ isOpened, onOpen }) {
   const handleOpen = () => {
     if (isOpened) return;
+
+    // Start background flute music on envelope open
+    try {
+      weddingAudio.play();
+    } catch {
+      // ignore
+    }
     
     // Trigger festive pastel & gold confetti shower
     try {

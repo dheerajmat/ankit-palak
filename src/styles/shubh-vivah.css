@@ -1080,42 +1080,40 @@
 }
 
 /* --------------------------------------------------------
-   Section 2 Scroll-in Entrance Animations
+   Section 2 Scroll-in Entrance Animations (Slow & Regal)
    -------------------------------------------------------- */
 .sv-banner-section .sv-plaque-banner-wrap {
   opacity: 0;
-  transform: translateY(32px) scale(0.97);
-  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(32px);
+  transition: opacity 1.3s cubic-bezier(0.16, 1, 0.3, 1), transform 1.3s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: opacity, transform;
 }
 
-.sv-banner-section .sv-desktop-countdown,
-.sv-banner-section .sv-mobile-countdown-showcase {
+.sv-banner-section .sv-countdown-banner-wrap {
   opacity: 0;
   transform: translateY(34px);
-  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.15s, transform 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.15s;
+  transition: opacity 1.35s cubic-bezier(0.16, 1, 0.3, 1) 0.22s, transform 1.35s cubic-bezier(0.16, 1, 0.3, 1) 0.22s;
   will-change: opacity, transform;
 }
 
 .sv-banner-section .sv-action-buttons-wrap {
   opacity: 0;
   transform: translateY(24px);
-  transition: opacity 0.8s ease 0.3s, transform 0.8s ease 0.3s;
-}
-
-.sv-banner-section .sv-scratch-section-wrap {
-  opacity: 0;
-  transform: translateY(28px);
-  transition: opacity 0.85s ease 0.4s, transform 0.85s ease 0.4s;
+  transition: opacity 1.25s cubic-bezier(0.16, 1, 0.3, 1) 0.38s, transform 1.25s cubic-bezier(0.16, 1, 0.3, 1) 0.38s;
 }
 
 .sv-banner-section.sv-section-animated .sv-plaque-banner-wrap,
-.sv-banner-section.sv-section-animated .sv-desktop-countdown,
-.sv-banner-section.sv-section-animated .sv-mobile-countdown-showcase,
-.sv-banner-section.sv-section-animated .sv-action-buttons-wrap,
-.sv-banner-section.sv-section-animated .sv-scratch-section-wrap {
+.sv-banner-section.sv-section-animated .sv-countdown-banner-wrap,
+.sv-banner-section.sv-section-animated .sv-action-buttons-wrap {
   opacity: 1;
-  transform: translateY(0) scale(1);
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .sv-banner-section .sv-plaque-banner-wrap,
+  .sv-banner-section .sv-countdown-banner-wrap {
+    transform: translateY(28px);
+  }
 }
 
 /* --------------------------------------------------------
@@ -1534,13 +1532,9 @@
   gap: clamp(10px, 2vw, 18px);
 }
 
-/* Dual Mode Countdown Visibility */
-.sv-desktop-countdown {
+/* Authentic Countdown Banner */
+.sv-countdown-banner-wrap {
   display: block;
-}
-
-.sv-mobile-countdown-showcase {
-  display: none;
 }
 
 /* ========================================================
@@ -1595,14 +1589,26 @@
   }
 
   /* ----------------------------------------------------
-     Hide Desktop Banner on Mobile -> Show Big Bold Royal Mobile Countdown Showcase
+     Authentic Temple Countdown Banner on Mobile (Fluid Scale)
      ---------------------------------------------------- */
-  .sv-desktop-countdown {
-    display: none !important;
+  .sv-countdown-banner-wrap {
+    display: block !important;
+    width: 100%;
+    max-width: 500px;
+    margin: clamp(20px, 4vw, 36px) auto 0;
+    filter: drop-shadow(0 8px 20px rgba(45, 10, 10, 0.16));
+  }
+
+  .sv-slot-digits {
+    font-size: clamp(13px, 3.8vw, 34px);
+  }
+
+  .sv-slot-label {
+    font-size: clamp(7.5px, 1.3vw, 13px);
   }
 
   .sv-mobile-countdown-showcase {
-    display: flex !important;
+    display: none !important;
     position: relative;
     flex-direction: column;
     align-items: center;
@@ -2338,41 +2344,57 @@
   background: linear-gradient(180deg, #FAF4E8 0%, #FFFDF8 50%, #FAF4E8 100%);
   position: relative;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-/* Scroll-In Staggered Reveals for Section 3 */
+.sv-couple-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto clamp(24px, 3.5vw, 36px);
+}
+
+/* Scroll-In Staggered Reveals for Section 3 (Slow & Regal) */
+.sv-couple-section .sv-couple-header,
 .sv-couple-section .sv-couple-kicker,
 .sv-couple-section .sv-couple-title-wrap,
 .sv-couple-section .sv-couple-flourish,
 .sv-couple-section .sv-couple-divider-wrap,
 .sv-couple-section .sv-couple-quote {
   opacity: 0;
-  transform: translateY(22px);
-  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(26px);
+  transition: opacity 1.25s cubic-bezier(0.16, 1, 0.3, 1), transform 1.25s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: opacity, transform;
 }
 
 .sv-couple-section .sv-card-groom {
   opacity: 0;
-  transform: translateX(-36px) scale(0.96);
-  transition: opacity 0.95s cubic-bezier(0.16, 1, 0.3, 1) 0.18s, transform 0.95s cubic-bezier(0.16, 1, 0.3, 1) 0.18s;
+  transform: translateX(-16px) translateY(24px);
+  transition: opacity 1.35s cubic-bezier(0.16, 1, 0.3, 1) 0.18s, transform 1.35s cubic-bezier(0.16, 1, 0.3, 1) 0.18s;
   will-change: opacity, transform;
 }
 
 .sv-couple-section .sv-card-bride {
   opacity: 0;
-  transform: translateX(36px) scale(0.96);
-  transition: opacity 0.95s cubic-bezier(0.16, 1, 0.3, 1) 0.28s, transform 0.95s cubic-bezier(0.16, 1, 0.3, 1) 0.28s;
+  transform: translateX(16px) translateY(24px);
+  transition: opacity 1.35s cubic-bezier(0.16, 1, 0.3, 1) 0.32s, transform 1.35s cubic-bezier(0.16, 1, 0.3, 1) 0.32s;
   will-change: opacity, transform;
 }
 
 .sv-couple-section .sv-couple-hashtag-wrap {
   opacity: 0;
-  transform: translateY(18px) scale(0.92);
-  transition: opacity 0.8s ease 0.4s, transform 0.8s ease 0.4s;
+  transform: translateY(20px);
+  transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.45s, transform 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.45s;
 }
 
 /* Triggered State when Section 3 scrolls into view */
+.sv-couple-section.sv-section-animated .sv-couple-header,
 .sv-couple-section.sv-section-animated .sv-couple-kicker,
 .sv-couple-section.sv-section-animated .sv-couple-title-wrap,
 .sv-couple-section.sv-section-animated .sv-couple-flourish,
@@ -2382,7 +2404,14 @@
 .sv-couple-section.sv-section-animated .sv-card-bride,
 .sv-couple-section.sv-section-animated .sv-couple-hashtag-wrap {
   opacity: 1;
-  transform: translate(0) scale(1);
+  transform: translate(0);
+}
+
+@media (max-width: 768px) {
+  .sv-couple-section .sv-card-groom,
+  .sv-couple-section .sv-card-bride {
+    transform: translateY(28px);
+  }
 }
 
 .sv-couple-kicker {
@@ -2396,7 +2425,7 @@
   letter-spacing: 0.22em;
   color: #8A1F2B;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.9);
-  margin-bottom: 4px;
+  margin: 0 auto 6px;
 }
 
 .sv-couple-floret {
@@ -2408,18 +2437,21 @@
 /* "The Bride & Groom" - Hero Pinyon Script Font Matching Ankit & Palak */
 .sv-couple-title-wrap {
   position: relative;
-  display: inline-block;
-  margin: 2px auto 4px;
+  display: block;
+  width: 100%;
+  text-align: center;
+  margin: 2px auto 6px;
 }
 
 .sv-couple-title {
+  display: block;
   font-family: 'Pinyon Script', cursive !important;
-  font-size: clamp(48px, 9.5vw, 72px) !important;
+  font-size: clamp(48px, 9.5vw, 76px) !important;
   font-weight: 400 !important;
   letter-spacing: 0.02em;
   color: #7B1824 !important;
-  line-height: 1.1;
-  margin: 0;
+  line-height: 1.15;
+  margin: 0 auto;
   text-shadow: 
     0 1px 1px rgba(255, 255, 255, 0.95),
     0 3px 14px rgba(123, 24, 36, 0.2);
@@ -2587,7 +2619,32 @@
 }
 
 .sv-couple-hashtag-wrap {
-  margin-top: 42px;
+  margin-top: 36px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.sv-couple-hashtag-heading {
+  font-family: 'Pinyon Script', cursive !important;
+  font-size: clamp(48px, 9.5vw, 72px) !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.02em;
+  color: #7B1824 !important;
+  line-height: 1.1;
+  margin: 0;
+  text-shadow: 
+    0 1px 1px rgba(255, 255, 255, 0.95),
+    0 3px 14px rgba(123, 24, 36, 0.2);
+}
+
+.sv-hashtag-symbol {
+  font-family: 'Cinzel', serif;
+  font-size: 0.72em;
+  color: #C49132;
+  margin-right: 3px;
+  vertical-align: 4px;
 }
 
 .sv-couple-hashtag-pill {
@@ -2659,6 +2716,31 @@
 .sv-family-line-dot {
   color: #C49132;
   font-size: 11px;
+}
+
+/* Inter-Family Royal Motif Divider */
+.sv-family-inter-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  max-width: 640px;
+  margin: clamp(48px, 7vw, 76px) auto clamp(36px, 5.5vw, 56px);
+  padding: 0 16px;
+}
+
+.sv-family-inter-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #C49132, transparent);
+}
+
+.sv-family-inter-motif {
+  font-family: 'Cinzel', serif;
+  font-size: 13px;
+  color: #C49132;
+  letter-spacing: 0.18em;
+  text-shadow: 0 0 10px rgba(212, 160, 68, 0.4);
 }
 
 /* 3 Arched Royal Cards Grid */
@@ -2789,41 +2871,54 @@
   white-space: nowrap;
 }
 
-/* Scroll-In Staggered Animations */
-.sv-grooms-family-section .sv-family-header-wrap {
+/* Scroll-In Staggered Animations for Royal Families Shrine (Slow & Regal) */
+.sv-family-section .sv-family-header-wrap,
+.sv-family-section .sv-family-inter-divider {
   opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(26px);
+  transition: opacity 1.25s cubic-bezier(0.16, 1, 0.3, 1), transform 1.25s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: opacity, transform;
 }
 
-.sv-grooms-family-section .sv-family-card-1 {
+.sv-family-section .sv-family-card-1 {
   opacity: 0;
-  transform: translateX(-36px) scale(0.95);
-  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.15s, transform 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.15s;
+  transform: translateY(32px) translateX(-8px);
+  transition: opacity 1.35s cubic-bezier(0.16, 1, 0.3, 1) 0.15s, transform 1.35s cubic-bezier(0.16, 1, 0.3, 1) 0.15s;
   will-change: opacity, transform;
 }
 
-.sv-grooms-family-section .sv-family-card-2 {
+.sv-family-section .sv-family-card-2 {
   opacity: 0;
-  transform: translateY(36px) scale(0.95);
-  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.28s, transform 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.28s;
+  transform: translateY(34px);
+  transition: opacity 1.35s cubic-bezier(0.16, 1, 0.3, 1) 0.3s, transform 1.35s cubic-bezier(0.16, 1, 0.3, 1) 0.3s;
   will-change: opacity, transform;
 }
 
-.sv-grooms-family-section .sv-family-card-3 {
+.sv-family-section .sv-family-card-3 {
   opacity: 0;
-  transform: translateX(36px) scale(0.95);
-  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.4s, transform 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.4s;
+  transform: translateY(32px) translateX(8px);
+  transition: opacity 1.35s cubic-bezier(0.16, 1, 0.3, 1) 0.45s, transform 1.35s cubic-bezier(0.16, 1, 0.3, 1) 0.45s;
   will-change: opacity, transform;
 }
 
-.sv-grooms-family-section.sv-section-animated .sv-family-header-wrap,
-.sv-grooms-family-section.sv-section-animated .sv-family-card-1,
-.sv-grooms-family-section.sv-section-animated .sv-family-card-2,
-.sv-grooms-family-section.sv-section-animated .sv-family-card-3 {
-  opacity: 1;
-  transform: translate(0) scale(1);
+.sv-family-section.sv-section-animated .sv-family-header-wrap,
+.sv-family-section.sv-section-animated .sv-family-inter-divider,
+.sv-family-section.sv-section-animated .sv-family-card-1,
+.sv-family-section.sv-section-animated .sv-family-card-2,
+.sv-family-section.sv-section-animated .sv-family-card-3,
+.sv-family-section .sv-family-header-wrap.is-revealed,
+.sv-family-section .sv-family-inter-divider.is-revealed,
+.sv-family-section .sv-family-card.is-revealed {
+  opacity: 1 !important;
+  transform: translate(0) !important;
+}
+
+@media (max-width: 768px) {
+  .sv-family-section .sv-family-card-1,
+  .sv-family-section .sv-family-card-2,
+  .sv-family-section .sv-family-card-3 {
+    transform: translateY(30px);
+  }
 }
 
 @media (max-width: 768px) {
@@ -3479,9 +3574,17 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    opacity: 1; /* GUARANTEED PERMANENT VISIBILITY - NEVER DISAPPEAR! */
-    transform: none;
-    transition: transform 0.35s ease, filter 0.35s ease;
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 1.3s cubic-bezier(0.16, 1, 0.3, 1), transform 1.3s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s ease;
+    will-change: opacity, transform;
+  }
+
+  .sv-mobile-ceremony-card.is-revealed,
+  .sv-mobile-ceremony-card.is-active-card,
+  .sv-ceremonies-section.sv-section-animated .sv-mobile-ceremony-card:first-child {
+    opacity: 1;
+    transform: translateY(0);
   }
 
   .sv-mobile-ceremony-card.is-active-card {
@@ -3874,4 +3977,1887 @@
   font-family: 'Cinzel', serif;
   font-size: 20px;
   color: #C49132;
+}
+
+/* ========================================================
+   8. ROYAL WEDDING VENUES SECTION (BRAVIA & GRAND XENIA)
+   ======================================================== */
+.sv-venues-section {
+  padding: clamp(64px, 8.5vw, 100px) 20px;
+  background: linear-gradient(180deg, #FAF4E8 0%, #FFFDF8 50%, #FAF4E8 100%);
+  background-image: 
+    linear-gradient(180deg, #FAF4E8 0%, rgba(250, 244, 232, 0.95) 40px, transparent 140px),
+    radial-gradient(ellipse 80% 40% at 50% 0%, rgba(245, 158, 11, 0.12) 0%, transparent 70%),
+    url('/assets/shubh-vivah/paper-texture.svg');
+  position: relative;
+  overflow: hidden;
+}
+
+.sv-venues-inner {
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+.sv-venues-header {
+  text-align: center;
+  margin-bottom: clamp(36px, 5.5vw, 56px);
+}
+
+.sv-venues-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Cinzel', serif;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: #9C6B16;
+  text-transform: uppercase;
+}
+
+.sv-venues-floret {
+  color: #D4A044;
+  font-size: 10px;
+}
+
+.sv-venues-title {
+  font-family: 'Pinyon Script', cursive;
+  font-size: clamp(48px, 9vw, 72px);
+  font-weight: 400;
+  color: #7B1824;
+  margin: 4px 0 0;
+  line-height: 1.15;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.95), 0 3px 14px rgba(123, 24, 36, 0.18);
+}
+
+.sv-venues-flourish {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin: 4px 0 12px;
+  color: #C49132;
+  font-size: 13px;
+}
+
+.sv-venues-flourish .sv-flourish-stem {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 14px;
+  letter-spacing: 2px;
+  opacity: 0.85;
+}
+
+.sv-venues-flourish .sv-flourish-bloom {
+  font-size: 14px;
+  transform: translateY(-1px);
+}
+
+.sv-venues-subtitle {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(17px, 2.4vw, 21px);
+  color: #633339;
+  max-width: 660px;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+/* Two Venue Cards Grid */
+.sv-venues-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(24px, 4vw, 40px);
+  align-items: stretch;
+}
+
+.sv-venue-card {
+  position: relative;
+  background: linear-gradient(180deg, #FFFDF8 0%, #FAF1E2 100%);
+  border: 1.5px solid #D4A044;
+  border-radius: 24px;
+  box-shadow: 
+    0 16px 42px rgba(123, 24, 36, 0.12),
+    inset 0 0 28px rgba(212, 160, 68, 0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease;
+}
+
+.sv-venue-card::before {
+  content: '';
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  right: 8px;
+  bottom: 8px;
+  border: 1px dashed rgba(212, 160, 68, 0.45);
+  border-radius: 18px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.sv-venue-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 
+    0 22px 52px rgba(123, 24, 36, 0.18),
+    inset 0 0 32px rgba(212, 160, 68, 0.16);
+}
+
+/* Corner Gold Motifs */
+.sv-venue-card .sv-card-corner {
+  position: absolute;
+  color: #C49132;
+  font-size: 13px;
+  z-index: 5;
+  pointer-events: none;
+  line-height: 1;
+}
+
+.sv-venue-card .sv-card-corner.tl { top: 14px; left: 14px; }
+.sv-venue-card .sv-card-corner.tr { top: 14px; right: 14px; }
+.sv-venue-card .sv-card-corner.bl { bottom: 14px; left: 14px; }
+.sv-venue-card .sv-card-corner.br { bottom: 14px; right: 14px; }
+
+/* Card Content */
+.sv-venue-content {
+  padding: clamp(32px, 4.5vw, 44px) clamp(24px, 3.8vw, 36px) clamp(28px, 4vw, 38px);
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  text-align: left;
+  position: relative;
+  z-index: 2;
+}
+
+.sv-venue-badge-row {
+  margin-bottom: 8px;
+}
+
+.sv-venue-role-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: #7B1824;
+  background: rgba(138, 31, 43, 0.08);
+  border: 1px solid rgba(212, 160, 68, 0.5);
+  border-radius: 999px;
+  padding: 4px 14px;
+}
+
+.sv-badge-sparkle {
+  color: #C49132;
+  font-size: 9px;
+}
+
+.sv-venue-name {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(26px, 3.8vw, 32px);
+  font-weight: 700;
+  color: #7B1824;
+  margin: 6px 0 8px;
+  line-height: 1.2;
+}
+
+.sv-venue-address,
+.sv-venue-dates {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(16px, 2.2vw, 18px);
+  font-weight: 600;
+  color: #5A1E26;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  line-height: 1.4;
+  margin: 2px 0;
+}
+
+.sv-address-pin,
+.sv-dates-icon {
+  font-size: 15px;
+  flex-shrink: 0;
+}
+
+.sv-venue-card-divider {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, #D4A044 50%, transparent 100%);
+  margin: 18px 0 16px;
+  opacity: 0.65;
+}
+
+/* Functions Header */
+.sv-venue-functions-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Cinzel', serif;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: #8A5A12;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.sv-functions-bullet {
+  color: #D4A044;
+  font-size: 8px;
+}
+
+/* Ceremonies List Grid */
+.sv-venue-ceremonies-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin-bottom: 24px;
+  flex: 1;
+}
+
+.sv-venue-ceremony-pill {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 8px 12px;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(212, 160, 68, 0.4);
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(123, 24, 36, 0.04);
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.sv-venue-ceremony-pill:hover {
+  transform: translateY(-1.5px);
+  border-color: #D4A044;
+  background: #FFFDF8;
+}
+
+.sv-ceremony-pill-icon {
+  font-size: 15px;
+  flex-shrink: 0;
+}
+
+.sv-ceremony-pill-info {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.sv-ceremony-pill-name {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #4A151B;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sv-ceremony-pill-time {
+  font-family: 'Cinzel', serif;
+  font-size: 10px;
+  font-weight: 600;
+  color: #8A5A12;
+  letter-spacing: 0.04em;
+  margin-top: 1px;
+}
+
+/* Actions */
+.sv-venue-action-wrap {
+  margin-top: auto;
+  padding-top: 8px;
+}
+
+.sv-venue-directions-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 13px 22px;
+  background: linear-gradient(135deg, #8A1F2B 0%, #680A12 100%);
+  color: #FFEBB0 !important;
+  border: 1.2px solid #D4A044;
+  border-radius: 999px;
+  font-family: 'Cinzel', serif;
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  box-shadow: 0 6px 18px rgba(123, 24, 36, 0.25);
+  text-decoration: none !important;
+  box-sizing: border-box;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+
+.sv-venue-directions-btn:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, #9C2735 0%, #7B0E17 100%);
+  color: #FFFDF8 !important;
+  box-shadow: 0 10px 24px rgba(123, 24, 36, 0.38);
+}
+
+.sv-dir-icon {
+  font-size: 15px;
+  color: #FFEBB0;
+}
+
+.sv-dir-arrow {
+  transition: transform 0.2s ease;
+  font-size: 14px;
+}
+
+.sv-venue-directions-btn:hover .sv-dir-arrow {
+  transform: translateX(4px);
+}
+
+/* Mobile & Tablet Responsiveness */
+@media (max-width: 860px) {
+  .sv-venues-grid {
+    grid-template-columns: 1fr;
+    max-width: 540px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .sv-venue-ceremonies-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ========================================================
+   UNIFIED PAGE-WIDE SCROLL REVEAL SUITE (ROYAL TEMPLE THEME)
+   Subtle, graceful royal fade-in and upward glide on scroll
+   ======================================================== */
+
+/* Universal Scroll Reveal utility (Slow & Dignified Royal Glide) */
+.sv-scroll-reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 1.3s cubic-bezier(0.16, 1, 0.3, 1), transform 1.3s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.sv-scroll-reveal.is-revealed,
+.sv-section-animated .sv-scroll-reveal {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+.sv-delay-1 { transition-delay: 0.15s; }
+.sv-delay-2 { transition-delay: 0.30s; }
+.sv-delay-3 { transition-delay: 0.45s; }
+.sv-delay-4 { transition-delay: 0.60s; }
+.sv-delay-5 { transition-delay: 0.75s; }
+
+/* 1. Ceremonies Section Entrance */
+.sv-ceremonies-section .sv-ceremonies-header {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 1.25s cubic-bezier(0.16, 1, 0.3, 1), transform 1.25s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.sv-ceremonies-section .sv-ceremonies-desktop-timeline {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 1.35s cubic-bezier(0.16, 1, 0.3, 1) 0.18s, transform 1.35s cubic-bezier(0.16, 1, 0.3, 1) 0.18s;
+  will-change: opacity, transform;
+}
+
+.sv-ceremonies-section.sv-section-animated .sv-ceremonies-header,
+.sv-ceremonies-section.sv-section-animated .sv-ceremonies-desktop-timeline {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Individual Mobile Ceremony Cards Progressive Scroll Reveal */
+.sv-mobile-ceremony-card {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 1.3s cubic-bezier(0.16, 1, 0.3, 1), transform 1.3s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s ease;
+  will-change: opacity, transform;
+}
+
+.sv-mobile-ceremony-card.is-revealed,
+.sv-section-animated .sv-mobile-ceremony-card:first-child {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 2. Together, Forever Pavilion Entrance */
+.sv-together-section .sv-together-header {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 1.25s cubic-bezier(0.16, 1, 0.3, 1), transform 1.25s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.sv-together-section .sv-shloka-cartouche {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 1.3s cubic-bezier(0.16, 1, 0.3, 1) 0.18s, transform 1.3s cubic-bezier(0.16, 1, 0.3, 1) 0.18s;
+  will-change: opacity, transform;
+}
+
+.sv-together-section .sv-keepsake-card {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 1.3s cubic-bezier(0.16, 1, 0.3, 1) 0.32s, transform 1.3s cubic-bezier(0.16, 1, 0.3, 1) 0.32s;
+  will-change: opacity, transform;
+}
+
+.sv-together-section.sv-section-animated .sv-together-header,
+.sv-together-section.sv-section-animated .sv-shloka-cartouche,
+.sv-together-section.sv-section-animated .sv-keepsake-card {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 3. Venues Section Entrance */
+.sv-venue-section .sv-venue-header {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 1.25s cubic-bezier(0.16, 1, 0.3, 1), transform 1.25s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.sv-venue-section .sv-venue-card {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 1.35s cubic-bezier(0.16, 1, 0.3, 1), transform 1.35s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.sv-venue-section .sv-venue-card-0 {
+  transition-delay: 0.18s;
+}
+
+.sv-venue-section .sv-venue-card-1 {
+  transition-delay: 0.36s;
+}
+
+.sv-venue-section.sv-section-animated .sv-venue-header,
+.sv-venue-section.sv-section-animated .sv-venue-card {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 4. Gallery, RSVP & Wishes Wall Reveal */
+.long-section .section-kicker,
+.long-section .section-title,
+.long-section .section-subtitle {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 1.25s cubic-bezier(0.16, 1, 0.3, 1), transform 1.25s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.long-section .gallery-grid,
+.long-section .rsvp-card,
+.long-section .wishes-wall-container,
+.long-section .wishes-card-wrapper {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 1.35s cubic-bezier(0.16, 1, 0.3, 1) 0.2s, transform 1.35s cubic-bezier(0.16, 1, 0.3, 1) 0.2s;
+  will-change: opacity, transform;
+}
+
+.long-section.sv-section-animated .section-kicker,
+.long-section.sv-section-animated .section-title,
+.long-section.sv-section-animated .section-subtitle,
+.long-section.sv-section-animated .gallery-grid,
+.long-section.sv-section-animated .rsvp-card,
+.long-section.sv-section-animated .wishes-wall-container,
+.long-section.sv-section-animated .wishes-card-wrapper {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Gallery Tiles Stagger */
+.gallery-grid .gallery-tile {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 1.1s cubic-bezier(0.16, 1, 0.3, 1), transform 1.1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.sv-section-animated .gallery-grid .gallery-tile:nth-child(1) { transition-delay: 0.12s; opacity: 1; transform: translateY(0); }
+.sv-section-animated .gallery-grid .gallery-tile:nth-child(2) { transition-delay: 0.24s; opacity: 1; transform: translateY(0); }
+.sv-section-animated .gallery-grid .gallery-tile:nth-child(3) { transition-delay: 0.36s; opacity: 1; transform: translateY(0); }
+.sv-section-animated .gallery-grid .gallery-tile:nth-child(4) { transition-delay: 0.48s; opacity: 1; transform: translateY(0); }
+.sv-section-animated .gallery-grid .gallery-tile:nth-child(5) { transition-delay: 0.60s; opacity: 1; transform: translateY(0); }
+.sv-section-animated .gallery-grid .gallery-tile:nth-child(6) { transition-delay: 0.72s; opacity: 1; transform: translateY(0); }
+
+/* 5. Finale Scene Entrance */
+#finale .content.arch,
+#finale .section-index,
+#finale .floral {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 1.3s cubic-bezier(0.16, 1, 0.3, 1), transform 1.3s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+#finale.sv-section-animated .content.arch,
+#finale.sv-section-animated .section-index,
+#finale.sv-section-animated .floral {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ========================================================
+   DEDICATED MOBILE SCROLL REVEAL OPTIMIZATION (<= 768px)
+   Tailored for thumb scrolling: crisp 0.85s duration,
+   subtle 18px lift + micro-scale, silky 60fps GPU acceleration
+   ======================================================== */
+@media (max-width: 768px) {
+  /* Universal Reveal for Mobile */
+  .sv-scroll-reveal,
+  .reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(18px) scale(0.985);
+    transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    will-change: opacity, transform;
+  }
+
+  .sv-scroll-reveal.is-revealed,
+  .sv-section-animated .sv-scroll-reveal,
+  .reveal-on-scroll.is-revealed,
+  .sv-section-animated .reveal-on-scroll {
+    opacity: 1 !important;
+    transform: translateY(0) scale(1) !important;
+  }
+
+  /* 1. Date & Countdown Mobile Entrance */
+  .sv-banner-section .sv-plaque-banner-wrap {
+    opacity: 0;
+    transform: translateY(18px) scale(0.985);
+    transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+  .sv-banner-section .sv-countdown-banner-wrap {
+    opacity: 0;
+    transform: translateY(20px) scale(0.985);
+    transition: opacity 0.88s cubic-bezier(0.16, 1, 0.3, 1) 0.1s, transform 0.88s cubic-bezier(0.16, 1, 0.3, 1) 0.1s;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+  .sv-banner-section.sv-section-animated .sv-plaque-banner-wrap,
+  .sv-banner-section.sv-section-animated .sv-countdown-banner-wrap,
+  .sv-banner-section.sv-section-animated .sv-action-buttons-wrap {
+    opacity: 1 !important;
+    transform: translateY(0) scale(1) !important;
+  }
+
+  /* 2. Groom & Bride Mobile Entrance */
+  .sv-couple-section .sv-couple-header,
+  .sv-couple-section .sv-couple-kicker,
+  .sv-couple-section .sv-couple-title-wrap,
+  .sv-couple-section .sv-couple-flourish,
+  .sv-couple-section .sv-couple-divider-wrap,
+  .sv-couple-section .sv-couple-quote {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+  .sv-couple-section .sv-card-groom {
+    opacity: 0;
+    transform: translateY(20px) scale(0.985);
+    transition: opacity 0.88s cubic-bezier(0.16, 1, 0.3, 1) 0.08s, transform 0.88s cubic-bezier(0.16, 1, 0.3, 1) 0.08s;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+  .sv-couple-section .sv-card-bride {
+    opacity: 0;
+    transform: translateY(20px) scale(0.985);
+    transition: opacity 0.88s cubic-bezier(0.16, 1, 0.3, 1) 0.18s, transform 0.88s cubic-bezier(0.16, 1, 0.3, 1) 0.18s;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+  .sv-couple-section.sv-section-animated .sv-couple-header,
+  .sv-couple-section.sv-section-animated .sv-couple-kicker,
+  .sv-couple-section.sv-section-animated .sv-couple-title-wrap,
+  .sv-couple-section.sv-section-animated .sv-couple-flourish,
+  .sv-couple-section.sv-section-animated .sv-couple-divider-wrap,
+  .sv-couple-section.sv-section-animated .sv-couple-quote,
+  .sv-couple-section.sv-section-animated .sv-card-groom,
+  .sv-couple-section.sv-section-animated .sv-card-bride,
+  .sv-couple-section.sv-section-animated .sv-couple-hashtag-wrap {
+    opacity: 1 !important;
+    transform: translateY(0) scale(1) !important;
+  }
+
+  /* 3. Mobile Ceremonies Toran Stream */
+  .sv-ceremonies-section .sv-ceremonies-header {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .sv-mobile-ceremony-card {
+    opacity: 0;
+    transform: translateY(20px) scale(0.985);
+    transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1), filter 0.35s ease;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+  .sv-mobile-ceremony-card.is-revealed,
+  .sv-mobile-ceremony-card.is-active-card,
+  .sv-ceremonies-section.sv-section-animated .sv-mobile-ceremony-card:first-child {
+    opacity: 1 !important;
+    transform: translateY(0) scale(1) !important;
+  }
+
+  /* 4. Together, Forever Pavilion Mobile Entrance */
+  .sv-together-section .sv-together-header {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .sv-together-section .sv-shloka-cartouche {
+    opacity: 0;
+    transform: translateY(20px) scale(0.985);
+    transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.08s, transform 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.08s;
+  }
+  .sv-together-section .sv-keepsake-card {
+    opacity: 0;
+    transform: translateY(20px) scale(0.985);
+    transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.16s, transform 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.16s;
+  }
+  .sv-together-section.sv-section-animated .sv-together-header,
+  .sv-together-section.sv-section-animated .sv-shloka-cartouche,
+  .sv-together-section.sv-section-animated .sv-keepsake-card {
+    opacity: 1 !important;
+    transform: translateY(0) scale(1) !important;
+  }
+
+  /* 5. Venues Section Mobile Entrance */
+  .sv-venue-section .sv-venue-header {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .sv-venue-section .sv-venue-card {
+    opacity: 0;
+    transform: translateY(20px) scale(0.985);
+    transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+  .sv-venue-section.sv-section-animated .sv-venue-header,
+  .sv-venue-section.sv-section-animated .sv-venue-card {
+    opacity: 1 !important;
+    transform: translateY(0) scale(1) !important;
+  }
+
+  /* 6. Royal Families Mobile Entrance */
+  .sv-family-section .sv-family-header-wrap,
+  .sv-family-section .sv-family-inter-divider {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .sv-family-section .sv-family-card {
+    opacity: 0;
+    transform: translateY(20px) scale(0.985);
+    transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+  .sv-family-section.sv-section-animated .sv-family-header-wrap,
+  .sv-family-section.sv-section-animated .sv-family-inter-divider,
+  .sv-family-section .sv-family-header-wrap.is-revealed,
+  .sv-family-section .sv-family-inter-divider.is-revealed,
+  .sv-family-section .sv-family-card.is-revealed,
+  .sv-family-section.sv-section-animated .sv-family-card {
+    opacity: 1 !important;
+    transform: translateY(0) scale(1) !important;
+  }
+
+  /* 7. Gallery & RSVP Mobile */
+  .long-section .section-kicker,
+  .long-section .section-title,
+  .long-section .section-subtitle {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .long-section .gallery-grid,
+  .long-section .rsvp-card,
+  .long-section .wishes-wall-container {
+    opacity: 0;
+    transform: translateY(20px) scale(0.985);
+    transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+  .long-section.sv-section-animated .section-kicker,
+  .long-section.sv-section-animated .section-title,
+  .long-section.sv-section-animated .section-subtitle,
+  .long-section.sv-section-animated .gallery-grid,
+  .long-section.sv-section-animated .rsvp-card,
+  .long-section.sv-section-animated .wishes-wall-container {
+    opacity: 1 !important;
+    transform: translateY(0) scale(1) !important;
+  }
+
+  #finale .content.arch {
+    opacity: 0;
+    transform: translateY(20px) scale(0.985);
+    transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+  #finale.sv-section-animated .content.arch {
+    opacity: 1 !important;
+    transform: translateY(0) scale(1) !important;
+  }
+}
+
+
+/* ========================================================
+   9. SACRED ROYAL INVITATION SECTION (YOU ARE CORDIALLY INVITED)
+   ======================================================== */
+.sv-invitation-section {
+  padding: clamp(60px, 8vw, 96px) 20px;
+  background: linear-gradient(180deg, #FAF4E8 0%, #FFFDF8 50%, #FAF4E8 100%);
+  background-image: 
+    radial-gradient(ellipse 70% 40% at 50% 0%, rgba(245, 158, 11, 0.12) 0%, transparent 70%),
+    radial-gradient(ellipse 70% 40% at 50% 100%, rgba(138, 31, 43, 0.08) 0%, transparent 70%);
+}
+
+.sv-invitation-inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.sv-invitation-card {
+  position: relative;
+  background: linear-gradient(180deg, #FFFDF8 0%, #FAF1E2 100%);
+  border: 1.5px solid #D4A044;
+  border-radius: 28px;
+  box-shadow: 
+    0 18px 48px rgba(123, 24, 36, 0.12),
+    inset 0 0 32px rgba(212, 160, 68, 0.12);
+  padding: clamp(36px, 5vw, 56px) clamp(24px, 4vw, 48px);
+  text-align: center;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 1.3s cubic-bezier(0.16, 1, 0.3, 1), transform 1.3s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.sv-invitation-section.sv-section-animated .sv-invitation-card {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.sv-invitation-card::before {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  border: 1px dashed rgba(212, 160, 68, 0.45);
+  border-radius: 20px;
+  pointer-events: none;
+}
+
+.sv-invitation-card .sv-card-corner {
+  position: absolute;
+  color: #C49132;
+  font-size: 14px;
+  z-index: 5;
+  pointer-events: none;
+  line-height: 1;
+}
+
+.sv-invitation-card .sv-card-corner.tl { top: 16px; left: 16px; }
+.sv-invitation-card .sv-card-corner.tr { top: 16px; right: 16px; }
+.sv-invitation-card .sv-card-corner.bl { bottom: 16px; left: 16px; }
+.sv-invitation-card .sv-card-corner.br { bottom: 16px; right: 16px; }
+
+.sv-invitation-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: 'Cinzel', serif;
+  font-size: clamp(12px, 1.8vw, 14px);
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: #8A5A12;
+  margin-bottom: 14px;
+}
+
+.sv-invitation-shloka {
+  font-family: 'Noto Serif Devanagari', Georgia, serif;
+  font-size: clamp(15px, 2.2vw, 18px);
+  font-weight: 600;
+  line-height: 1.7;
+  color: #7B1824;
+  margin: 0 auto 16px;
+  max-width: 680px;
+  font-style: italic;
+}
+
+.sv-invitation-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin: 0 auto 20px;
+  color: #D4A044;
+}
+
+.sv-invitation-divider .sv-divider-stem {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 15px;
+  letter-spacing: 2px;
+  opacity: 0.85;
+}
+
+.sv-invitation-divider .sv-divider-bloom {
+  font-size: 15px;
+  transform: translateY(-1px);
+}
+
+.sv-invitation-title {
+  font-family: 'Pinyon Script', cursive;
+  font-size: clamp(44px, 8vw, 68px);
+  font-weight: 400;
+  color: #7B1824;
+  margin: 0 0 4px;
+  line-height: 1.15;
+}
+
+.sv-invitation-hindi {
+  font-family: 'Noto Serif Devanagari', serif;
+  font-size: clamp(20px, 3.2vw, 26px);
+  font-weight: 700;
+  color: #A02B37;
+  margin-bottom: 20px;
+  letter-spacing: 0.04em;
+}
+
+.sv-invitation-prose {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(18px, 2.4vw, 22px);
+  line-height: 1.6;
+  color: #5A1E26;
+  max-width: 680px;
+  margin: 0 auto 22px;
+}
+
+.sv-invitation-couple {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(12px, 3vw, 20px);
+  margin: 10px 0 16px;
+}
+
+.sv-invitation-couple .sv-couple-name {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(28px, 4.5vw, 38px);
+  font-weight: 700;
+  color: #7B1824;
+  letter-spacing: 0.04em;
+}
+
+.sv-invitation-couple .sv-couple-amp {
+  font-family: 'Pinyon Script', cursive;
+  font-size: clamp(34px, 5.5vw, 48px);
+  color: #C49132;
+}
+
+.sv-invitation-parents {
+  margin-bottom: 24px;
+}
+
+.sv-parents-line {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(16px, 2.2vw, 19px);
+  font-weight: 600;
+  color: #7C4524;
+  margin: 4px 0;
+}
+
+.sv-invitation-meta-strip {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 12px clamp(10px, 2.5vw, 22px);
+  padding: 12px 24px;
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(212, 160, 68, 0.5);
+  border-radius: 999px;
+  box-shadow: 0 4px 16px rgba(123, 24, 36, 0.06);
+  margin: 10px auto 32px;
+}
+
+.sv-meta-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Cinzel', serif;
+  font-size: clamp(12px, 1.8vw, 13.5px);
+  font-weight: 700;
+  color: #5A1E26;
+  letter-spacing: 0.04em;
+}
+
+.sv-meta-icon {
+  font-size: 15px;
+}
+
+.sv-meta-sep {
+  color: #D4A044;
+  font-size: 10px;
+}
+
+.sv-invitation-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 10px;
+}
+
+.sv-btn-rsvp-jump {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 28px;
+  background: linear-gradient(135deg, #871A24 0%, #6E121C 100%);
+  color: #FFFDF8 !important;
+  font-family: 'Cinzel', serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  border-radius: 999px;
+  border: 1px solid #D4A044;
+  box-shadow: 0 8px 24px rgba(123, 24, 36, 0.3);
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+
+.sv-btn-rsvp-jump:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, #9E222E 0%, #7E1520 100%);
+  box-shadow: 0 12px 28px rgba(123, 24, 36, 0.4);
+}
+
+.sv-btn-family-modal {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 28px;
+  background: #FFFDF8;
+  color: #7B1824;
+  font-family: 'Cinzel', serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  border-radius: 999px;
+  border: 1.5px solid #D4A044;
+  box-shadow: 0 6px 20px rgba(212, 160, 68, 0.2);
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+
+.sv-btn-family-modal:hover {
+  transform: translateY(-2px);
+  background: #FFF9ED;
+  border-color: #8A5A12;
+  box-shadow: 0 10px 24px rgba(212, 160, 68, 0.32);
+}
+
+/* ========================================================
+   10. ROYAL FAMILIES MODAL
+   ======================================================== */
+.sv-family-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(26, 5, 8, 0.82);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: svFadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.sv-family-modal-content {
+  position: relative;
+  width: 100%;
+  max-width: 1080px;
+  max-height: 90vh;
+  background: linear-gradient(180deg, #FAF4E8 0%, #FFFDF8 40%, #FAF4E8 100%);
+  border: 2px solid #D4A044;
+  border-radius: 28px;
+  box-shadow: 
+    0 24px 64px rgba(0, 0, 0, 0.45),
+    inset 0 0 36px rgba(212, 160, 68, 0.15);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: svModalPop 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes svFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes svModalPop {
+  from { opacity: 0; transform: scale(0.94) translateY(18px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.sv-family-modal-close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(135, 26, 36, 0.08);
+  border: 1px solid rgba(212, 160, 68, 0.6);
+  color: #7B1824;
+  font-size: 18px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.2s ease;
+}
+
+.sv-family-modal-close:hover {
+  background: #7B1824;
+  color: #FFFDF8;
+  transform: rotate(90deg);
+}
+
+.sv-family-modal-header {
+  padding: clamp(28px, 4vw, 36px) clamp(24px, 4vw, 40px) 16px;
+  text-align: center;
+  border-bottom: 1px solid rgba(212, 160, 68, 0.3);
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.sv-modal-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: #8A5A12;
+  margin-bottom: 6px;
+}
+
+.sv-family-modal-title {
+  font-family: 'Pinyon Script', cursive;
+  font-size: clamp(42px, 6vw, 56px);
+  font-weight: 400;
+  color: #7B1824;
+  margin: 0;
+  line-height: 1.1;
+}
+
+.sv-family-modal-subtitle {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(16px, 2.2vw, 19px);
+  color: #633339;
+  max-width: 620px;
+  margin: 6px auto 12px;
+}
+
+.sv-family-modal-body {
+  padding: 24px clamp(20px, 4vw, 40px);
+  overflow-y: auto;
+  flex: 1;
+  -webkit-overflow-scrolling: touch;
+}
+
+.sv-family-modal-footer {
+  padding: 16px 24px;
+  text-align: center;
+  border-top: 1px solid rgba(212, 160, 68, 0.3);
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.sv-btn-modal-dismiss {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 32px;
+  background: linear-gradient(135deg, #871A24 0%, #6E121C 100%);
+  color: #FFFDF8;
+  font-family: 'Cinzel', serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  border-radius: 999px;
+  border: 1px solid #D4A044;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.sv-btn-modal-dismiss:hover {
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .sv-invitation-section .sv-invitation-card {
+    opacity: 0;
+    transform: translateY(20px) scale(0.985);
+    transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+  .sv-invitation-section.sv-section-animated .sv-invitation-card {
+    opacity: 1 !important;
+    transform: translateY(0) scale(1) !important;
+  }
+  .sv-invitation-meta-strip {
+    border-radius: 16px;
+    padding: 12px 16px;
+  }
+  .sv-family-modal-content {
+    max-height: 94vh;
+  }
+}
+
+
+/* ========================================================
+   11. STANDALONE ROYAL FAMILIES PAGE
+   ======================================================== */
+.sv-family-standalone-page {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #FAF4E8 0%, #FFFDF8 40%, #FAF4E8 100%);
+  background-image: 
+    linear-gradient(180deg, #FAF4E8 0%, rgba(250, 244, 232, 0.95) 60px, transparent 160px),
+    radial-gradient(ellipse 80% 50% at 50% 0%, rgba(245, 158, 11, 0.15) 0%, transparent 70%),
+    radial-gradient(ellipse 80% 50% at 50% 100%, rgba(138, 31, 43, 0.1) 0%, transparent 70%),
+    url('/assets/shubh-vivah/paper-texture.svg');
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+}
+
+.sv-family-page-nav {
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: rgba(255, 253, 248, 0.94);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1.5px solid rgba(212, 160, 68, 0.45);
+  box-shadow: 0 4px 20px rgba(123, 24, 36, 0.08);
+  padding: 12px 20px;
+}
+
+.sv-family-nav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.sv-back-nav-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 22px;
+  background: linear-gradient(135deg, #871A24 0%, #6E121C 100%);
+  color: #FFFDF8 !important;
+  font-family: 'Cinzel', serif;
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  border-radius: 999px;
+  border: 1px solid #D4A044;
+  box-shadow: 0 4px 14px rgba(123, 24, 36, 0.28);
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.sv-back-nav-btn:hover {
+  transform: translateX(-3px);
+  background: linear-gradient(135deg, #9E222E 0%, #7E1520 100%);
+  box-shadow: 0 6px 18px rgba(123, 24, 36, 0.38);
+}
+
+.sv-back-arrow {
+  font-size: 15px;
+  transition: transform 0.2s ease;
+}
+
+.sv-back-nav-btn:hover .sv-back-arrow {
+  transform: translateX(-2px);
+}
+
+.sv-family-nav-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Cinzel', serif;
+}
+
+.sv-brand-names {
+  font-size: 14px;
+  font-weight: 700;
+  color: #7B1824;
+  letter-spacing: 0.06em;
+}
+
+.sv-brand-sep {
+  color: #D4A044;
+  font-size: 10px;
+}
+
+.sv-brand-tag {
+  font-size: 12px;
+  color: #8A5A12;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+}
+
+.sv-family-page-hero {
+  text-align: center;
+  padding: clamp(48px, 6vw, 76px) 20px clamp(24px, 3.5vw, 40px);
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.sv-family-page-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Cinzel', serif;
+  font-size: clamp(11px, 1.8vw, 13px);
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: #8A5A12;
+  margin-bottom: 8px;
+}
+
+.sv-kicker-floret {
+  color: #D4A044;
+  font-size: 10px;
+}
+
+.sv-family-page-title {
+  font-family: 'Pinyon Script', cursive;
+  font-size: clamp(52px, 9vw, 84px);
+  font-weight: 400;
+  color: #7B1824;
+  margin: 0;
+  line-height: 1.1;
+  text-shadow: 0 2px 16px rgba(123, 24, 36, 0.15);
+}
+
+.sv-family-page-hindi {
+  font-family: 'Noto Serif Devanagari', serif;
+  font-size: clamp(18px, 3vw, 24px);
+  font-weight: 700;
+  color: #9C2735;
+  margin: 4px 0 10px;
+  letter-spacing: 0.05em;
+}
+
+.sv-family-page-flourish {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  color: #D4A044;
+  margin: 8px 0 16px;
+}
+
+.sv-family-page-subtitle {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(18px, 2.4vw, 22px);
+  line-height: 1.6;
+  color: #5A1E26;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.sv-family-page-container {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 20px clamp(48px, 6vw, 80px);
+  width: 100%;
+}
+
+.sv-family-showcase-section {
+  margin-bottom: clamp(48px, 6vw, 72px);
+}
+
+.sv-family-subkicker {
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: #8A5A12;
+  margin-bottom: 4px;
+}
+
+.sv-family-lineage-note {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(16px, 2vw, 19px);
+  font-weight: 600;
+  color: #7A353F;
+  margin: 6px auto 24px;
+  max-width: 600px;
+}
+
+/* Interlude between families */
+.sv-family-page-interlude {
+  text-align: center;
+  padding: clamp(24px, 4vw, 40px) 20px;
+  margin: clamp(20px, 3vw, 40px) auto;
+  max-width: 760px;
+  background: rgba(255, 253, 248, 0.7);
+  border: 1px dashed rgba(212, 160, 68, 0.5);
+  border-radius: 20px;
+}
+
+.sv-interlude-shloka {
+  font-family: 'Noto Serif Devanagari', serif;
+  font-size: clamp(16px, 2.4vw, 20px);
+  font-weight: 600;
+  color: #7B1824;
+  line-height: 1.7;
+  margin: 12px 0 6px;
+  font-style: italic;
+}
+
+.sv-interlude-caption {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(15px, 2vw, 17.5px);
+  color: #8A5A12;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+/* Bottom Return Callout */
+.sv-family-return-callout {
+  margin-top: clamp(36px, 5vw, 60px);
+  text-align: center;
+}
+
+.sv-return-card {
+  max-width: 680px;
+  margin: 0 auto;
+  background: linear-gradient(180deg, #FFFDF8 0%, #FAF1E2 100%);
+  border: 1.5px solid #D4A044;
+  border-radius: 24px;
+  padding: clamp(32px, 5vw, 44px) clamp(24px, 4vw, 40px);
+  box-shadow: 
+    0 16px 42px rgba(123, 24, 36, 0.1),
+    inset 0 0 24px rgba(212, 160, 68, 0.1);
+}
+
+.sv-return-floret {
+  color: #C49132;
+  font-size: 14px;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.sv-return-heading {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(22px, 3.4vw, 28px);
+  font-weight: 700;
+  color: #7B1824;
+  margin: 0 0 10px;
+}
+
+.sv-return-prose {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(16px, 2.2vw, 19px);
+  color: #5A1E26;
+  margin: 0 auto 20px;
+  line-height: 1.5;
+  max-width: 520px;
+}
+
+.sv-btn-return-invitation {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 32px;
+  background: linear-gradient(135deg, #871A24 0%, #6E121C 100%);
+  color: #FFFDF8 !important;
+  font-family: 'Cinzel', serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  border-radius: 999px;
+  border: 1px solid #D4A044;
+  box-shadow: 0 8px 24px rgba(123, 24, 36, 0.32);
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+
+.sv-btn-return-invitation:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, #9E222E 0%, #7E1520 100%);
+  box-shadow: 0 12px 28px rgba(123, 24, 36, 0.42);
+}
+
+.sv-family-page-footer {
+  margin-top: auto;
+}
+
+@media (max-width: 600px) {
+  .sv-family-nav-brand {
+    display: none;
+  }
+  .sv-family-nav-inner {
+    justify-content: center;
+  }
+}
+
+
+/* ========================================================
+   12. ROYAL SHUBH VIVAH RSVP FORM
+   ======================================================== */
+.sv-rsvp-section {
+  padding: clamp(64px, 8.5vw, 104px) 20px;
+  background: linear-gradient(180deg, #FAF4E8 0%, #FFFDF8 50%, #FAF4E8 100%);
+  background-image: 
+    radial-gradient(ellipse 70% 40% at 50% 0%, rgba(245, 158, 11, 0.12) 0%, transparent 70%),
+    radial-gradient(ellipse 70% 40% at 50% 100%, rgba(138, 31, 43, 0.08) 0%, transparent 70%);
+}
+
+.sv-rsvp-inner {
+  max-width: 820px;
+  margin: 0 auto;
+}
+
+.sv-rsvp-header {
+  text-align: center;
+  margin-bottom: clamp(32px, 5vw, 48px);
+}
+
+.sv-rsvp-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Cinzel', serif;
+  font-size: clamp(11px, 1.8vw, 12.5px);
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: #8A5A12;
+  margin-bottom: 6px;
+}
+
+.sv-rsvp-floret {
+  color: #D4A044;
+  font-size: 10px;
+}
+
+.sv-rsvp-title {
+  font-family: 'Pinyon Script', cursive;
+  font-size: clamp(50px, 8.5vw, 76px);
+  font-weight: 400;
+  color: #7B1824;
+  margin: 0;
+  line-height: 1.15;
+}
+
+.sv-rsvp-hindi {
+  font-family: 'Noto Serif Devanagari', serif;
+  font-size: clamp(18px, 2.8vw, 24px);
+  font-weight: 700;
+  color: #A02B37;
+  margin: 4px 0 10px;
+  letter-spacing: 0.04em;
+}
+
+.sv-rsvp-flourish {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  color: #D4A044;
+  margin: 8px 0 14px;
+}
+
+.sv-rsvp-subtitle {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(17px, 2.4vw, 21px);
+  color: #5A1E26;
+  max-width: 620px;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+/* Royal Form Card */
+.sv-rsvp-royal-card {
+  position: relative;
+  background: linear-gradient(180deg, #FFFDF8 0%, #FAF1E2 100%);
+  border: 1.5px solid #D4A044;
+  border-radius: 28px;
+  box-shadow: 
+    0 20px 52px rgba(123, 24, 36, 0.12),
+    inset 0 0 32px rgba(212, 160, 68, 0.12);
+  padding: clamp(32px, 5vw, 54px) clamp(22px, 4vw, 48px);
+  overflow: hidden;
+}
+
+.sv-rsvp-royal-card::before {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  border: 1px dashed rgba(212, 160, 68, 0.45);
+  border-radius: 20px;
+  pointer-events: none;
+}
+
+.sv-rsvp-royal-card .sv-card-corner {
+  position: absolute;
+  color: #C49132;
+  font-size: 14px;
+  z-index: 5;
+  pointer-events: none;
+  line-height: 1;
+}
+
+.sv-rsvp-royal-card .sv-card-corner.tl { top: 16px; left: 16px; }
+.sv-rsvp-royal-card .sv-card-corner.tr { top: 16px; right: 16px; }
+.sv-rsvp-royal-card .sv-card-corner.bl { bottom: 16px; left: 16px; }
+.sv-rsvp-royal-card .sv-card-corner.br { bottom: 16px; right: 16px; }
+
+/* Form Fields */
+.sv-royal-form {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.sv-form-group {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.sv-form-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Cinzel', serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: #8A5A12;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.sv-label-icon {
+  font-size: 14px;
+}
+
+.sv-form-input,
+.sv-form-select,
+.sv-form-textarea {
+  width: 100%;
+  box-sizing: border-box;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: #4A151B;
+  background: #FFFDF8;
+  border: 1.5px solid rgba(212, 160, 68, 0.55);
+  border-radius: 12px;
+  padding: 13px 18px;
+  box-shadow: 0 2px 8px rgba(123, 24, 36, 0.04), inset 0 1px 3px rgba(0, 0, 0, 0.03);
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+  outline: none;
+}
+
+.sv-form-input:focus,
+.sv-form-select:focus,
+.sv-form-textarea:focus {
+  border-color: #871A24;
+  background: #FFFFFF;
+  box-shadow: 0 0 0 3px rgba(135, 26, 36, 0.12), 0 4px 14px rgba(212, 160, 68, 0.22);
+}
+
+.sv-form-input::placeholder,
+.sv-form-textarea::placeholder {
+  color: rgba(138, 90, 18, 0.5);
+  font-weight: 500;
+  font-style: italic;
+}
+
+.sv-form-textarea {
+  resize: vertical;
+  min-height: 100px;
+  line-height: 1.5;
+}
+
+/* Attendance Choice Pills */
+.sv-attendance-pill-group {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.sv-attendance-pill {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 16px;
+  border-radius: 14px;
+  border: 1.5px solid rgba(212, 160, 68, 0.5);
+  background: #FFFDF8;
+  color: #633339;
+  font-family: 'Cinzel', serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 2px 8px rgba(123, 24, 36, 0.04);
+}
+
+.sv-attendance-pill:hover {
+  border-color: #D4A044;
+  background: #FFF9ED;
+  transform: translateY(-1.5px);
+}
+
+.sv-attendance-pill.active {
+  background: linear-gradient(135deg, #871A24 0%, #6E121C 100%);
+  color: #FFFDF8;
+  border-color: #D4A044;
+  box-shadow: 0 6px 18px rgba(123, 24, 36, 0.28);
+}
+
+.sv-attendance-pill.decline.active {
+  background: #5A1E26;
+  color: #FFFDF8;
+  border-color: #9C6B16;
+}
+
+.sv-radio-hidden {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.sv-pill-floret {
+  font-size: 11px;
+  color: #D4A044;
+}
+
+.sv-attendance-pill.active .sv-pill-floret {
+  color: #FFEAA7;
+}
+
+/* Submit Action Button */
+.sv-form-action-wrap {
+  margin-top: 10px;
+}
+
+.sv-btn-rsvp-submit {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 16px 32px;
+  background: linear-gradient(135deg, #871A24 0%, #6E121C 100%);
+  color: #FFFDF8 !important;
+  font-family: 'Cinzel', serif;
+  font-size: clamp(13px, 2vw, 15px);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  border-radius: 999px;
+  border: 1.5px solid #D4A044;
+  box-shadow: 0 8px 24px rgba(123, 24, 36, 0.35);
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+
+.sv-btn-rsvp-submit:hover:not(:disabled) {
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, #9E222E 0%, #7E1520 100%);
+  box-shadow: 0 12px 30px rgba(123, 24, 36, 0.45);
+}
+
+.sv-btn-rsvp-submit:disabled {
+  opacity: 0.85;
+  cursor: wait;
+}
+
+.sv-rsvp-footer-note {
+  text-align: center;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 14.5px;
+  color: #8A5A12;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  margin-top: 6px;
+}
+
+/* Success Card */
+.sv-rsvp-success-card {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 10px 0;
+}
+
+.sv-success-icon {
+  font-size: 42px;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.sv-success-title {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(24px, 4vw, 32px);
+  font-weight: 700;
+  color: #7B1824;
+  margin: 0 0 4px;
+}
+
+.sv-success-hindi {
+  font-family: 'Noto Serif Devanagari', serif;
+  font-size: clamp(16px, 2.5vw, 20px);
+  font-weight: 700;
+  color: #8A5A12;
+  margin-bottom: 18px;
+}
+
+.sv-success-summary-box {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(212, 160, 68, 0.5);
+  border-radius: 16px;
+  padding: 18px 24px;
+  max-width: 500px;
+  margin: 0 auto 18px;
+  text-align: left;
+  box-shadow: 0 4px 16px rgba(123, 24, 36, 0.05);
+}
+
+.sv-summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 0;
+  border-bottom: 1px dashed rgba(212, 160, 68, 0.3);
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 17px;
+}
+
+.sv-summary-row:last-child {
+  border-bottom: none;
+}
+
+.sv-summary-label {
+  font-weight: 600;
+  color: #8A5A12;
+}
+
+.sv-summary-val {
+  font-weight: 700;
+  color: #4A151B;
+}
+
+.sv-summary-val.accept {
+  color: #1E6B37;
+}
+
+.sv-summary-val.decline {
+  color: #9C2735;
+}
+
+.sv-summary-msg {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px dashed rgba(212, 160, 68, 0.3);
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 16px;
+  font-style: italic;
+  color: #5A1E26;
+  line-height: 1.4;
+}
+
+.sv-msg-quote {
+  font-family: 'Cinzel', serif;
+  color: #D4A044;
+  font-size: 18px;
+}
+
+.sv-success-note {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 16.5px;
+  color: #633339;
+  max-width: 520px;
+  margin: 0 auto 20px;
+}
+
+.sv-btn-update-rsvp {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 24px;
+  background: #FFFDF8;
+  color: #7B1824;
+  border: 1.5px solid #D4A044;
+  border-radius: 999px;
+  font-family: 'Cinzel', serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.sv-btn-update-rsvp:hover {
+  background: #FFF9ED;
+  transform: translateY(-1.5px);
+}
+
+@media (max-width: 600px) {
+  .sv-attendance-pill-group {
+    grid-template-columns: 1fr;
+  }
 }

@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { eventsData } from '../data/weddingData';
+import { useScrollReveal } from '../utils/useScrollReveal';
 
 export default function CelebrationsSection({ onSelectEvent }) {
+  const [sectionRef, isVisible] = useScrollReveal();
   const [filter, setFilter] = useState('all');
 
   const filteredEvents = eventsData.filter((evt) => {
@@ -10,7 +12,7 @@ export default function CelebrationsSection({ onSelectEvent }) {
   });
 
   return (
-    <section className="long-section" id="celebrations">
+    <section ref={sectionRef} className={`long-section ${isVisible ? 'sv-section-animated' : ''}`} id="celebrations">
       <div className="long-inner">
         <div className="section-kicker">Two days · A lifetime of memories</div>
         <h2 className="section-title">The Celebrations</h2>

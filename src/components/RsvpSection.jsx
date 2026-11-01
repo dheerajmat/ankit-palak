@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import confetti from 'canvas-confetti';
+import { useScrollReveal } from '../utils/useScrollReveal';
+
+const RSVP_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbyKsXw8RAYE_JxNGfm1anEsNdeS6L9pV4Jbkoy6Jjwn_613BSuO1l2PJs-wzGEWbClB/exec";
 
 export default function RsvpSection() {
   const [formData, setFormData] = useState({
@@ -31,13 +34,28 @@ export default function RsvpSection() {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!formData.guestName.trim() || !formData.attendance) return;
 
     localStorage.setItem('ankit_palak_rsvp', JSON.stringify(formData));
     setSubmittedData(formData);
     setIsEditing(false);
+
+    try {
+      await fetch(RSVP_WEBHOOK_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify({
+          ...formData,
+          timestamp: new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }),
+          couple: 'Ankit & Palak Wedding'
+        })
+      });
+    } catch (err) {
+      console.warn('Google Sheet submission note:', err);
+    }
 
     if (formData.attendance === 'Joyfully accepts') {
       try {
@@ -60,8 +78,10 @@ export default function RsvpSection() {
     setIsEditing(true);
   };
 
+  const [sectionRef, isVisible] = useScrollReveal();
+
   return (
-    <section className="long-section" id="rsvp">
+    <section ref={sectionRef} className={`long-section ${isVisible ? 'sv-section-animated' : ''}`} id="rsvp">
       <div className="long-inner">
         <div className="section-kicker">Your presence is our present</div>
         <h2 className="section-title">Will You Join Us?</h2>
