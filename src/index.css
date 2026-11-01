@@ -1,4 +1,7 @@
 :root {
+  color-scheme: light !important;
+  supported-color-schemes: light !important;
+  forced-color-adjust: none;
   --blush: #f7e4e5;
   --ivory: #fffaf5;
   --rose: #a64f61;
@@ -20,6 +23,9 @@
 }
 
 html {
+  color-scheme: light !important;
+  supported-color-schemes: light !important;
+  forced-color-adjust: none;
   scroll-behavior: smooth;
   scroll-padding-top: 60px;
   overflow-x: hidden;
@@ -27,6 +33,9 @@ html {
 }
 
 body {
+  color-scheme: light !important;
+  supported-color-schemes: light !important;
+  forced-color-adjust: none;
   margin: 0;
   background: var(--ivory);
   color: var(--ink);
@@ -36,8 +45,13 @@ body {
   -webkit-overflow-scrolling: touch;
 }
 
+input,
+textarea,
+select,
 button {
   font: inherit;
+  color-scheme: light !important;
+  forced-color-adjust: none;
 }
 
 button:focus-visible,
@@ -1445,4 +1459,31 @@ p {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* ========================================================
+   LIGHT THEME ENFORCEMENT (OVERRIDE OS/BROWSER DARK MODE)
+   Ensures the custom romantic & royal palettes remain pure light
+   even when the user's OS, phone or browser prefers dark mode.
+   ======================================================== */
+@media (prefers-color-scheme: dark) {
+  :root,
+  html,
+  body,
+  #root {
+    color-scheme: light !important;
+    supported-color-schemes: light !important;
+    forced-color-adjust: none !important;
+    background-color: var(--ivory) !important;
+    color: var(--ink) !important;
+  }
+
+  input,
+  textarea,
+  select,
+  button {
+    color-scheme: light !important;
+    forced-color-adjust: none !important;
+  }
+}
+
 

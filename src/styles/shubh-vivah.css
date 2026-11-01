@@ -4,6 +4,9 @@
    ======================================================== */
 
 :root {
+  color-scheme: light !important;
+  supported-color-schemes: light !important;
+  forced-color-adjust: none;
   --sv-crimson: #7b1824;
   --sv-crimson-dark: #4e0f17;
   --sv-crimson-deep: #32070d;
@@ -23,6 +26,9 @@
 
 /* Base Container & Paper Texture */
 .sv-root {
+  color-scheme: light !important;
+  supported-color-schemes: light !important;
+  forced-color-adjust: none;
   background-color: var(--sv-cream);
   background-image: var(--sv-paper);
   background-size: 400px 400px;
@@ -5863,3 +5869,54 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* ========================================================
+   LIGHT THEME ENFORCEMENT FOR SHUBH VIVAH
+   Guarantees that the temple mandap, cream parchment, and crimson
+   elements are never darkened or inverted by system dark mode.
+   ======================================================== */
+@media (prefers-color-scheme: dark) {
+  :root,
+  html,
+  body,
+  #root,
+  .sv-root {
+    color-scheme: light !important;
+    supported-color-schemes: light !important;
+    forced-color-adjust: none !important;
+  }
+
+  .sv-root,
+  .sv-root .screen,
+  .sv-root .long-section,
+  .sv-couple-section,
+  .sv-banner-section,
+  .sv-ceremonies-section,
+  .sv-together-section,
+  .sv-venues-section,
+  .sv-invitation-section,
+  .sv-rsvp-section {
+    color-scheme: light !important;
+    background-color: #FAF4E8 !important;
+    color: #381519 !important;
+  }
+
+  .sv-root input,
+  .sv-root textarea,
+  .sv-root select,
+  .sv-root button,
+  .sv-form-input,
+  .sv-form-select,
+  .sv-form-textarea {
+    color-scheme: light !important;
+    forced-color-adjust: none !important;
+    background-color: #FFFDF8 !important;
+    color: #4A151B !important;
+  }
+
+  .sv-root img,
+  .sv-root svg {
+    forced-color-adjust: none !important;
+  }
+}
+
